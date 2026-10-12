@@ -10,13 +10,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from lemqo import Rejection, __version__, verify_bytes  # noqa: E402
+from check_openai_sources import check_catalog  # noqa: E402
 
 
 def check_documents():
     required = ("README.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
                 "SECURITY.md", "CHANGELOG.md", "docs/specification.md", "docs/trust.md",
                 "docs/architecture.md", "docs/research.md", "docs/release.md",
-                ".github/workflows/ci.yml", ".github/workflows/release-artifacts.yml")
+                ".github/workflows/ci.yml", ".github/workflows/release-artifacts.yml",
+                "docs/lean.md", "docs/openai.md", "corpus/openai/catalog.json",
+                "corpus/openai/LICENSE", "bridge/lean/Main.lean", "bridge/lean/lake-manifest.json",
+                "bridge/openai/lake-manifest.json")
     for name in required:
         if not (ROOT / name).is_file():
             raise RuntimeError(f"missing release file: {name}")
@@ -26,7 +30,7 @@ def check_documents():
             target = target.strip("<>").split("#", 1)[0]
             if not target or ":" in target:
                 continue
-            if not (path.parent / target).is_file():
+            if not (path.parent / target).exists():
                 raise RuntimeError(f"broken local link in {path.name}: {target}")
     metadata = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     if metadata["project"]["version"] != __version__:
@@ -73,6 +77,7 @@ def main():
         return result.returncode
     check_documents()
     check_imports()
+    check_catalog(ROOT)
     count = check_examples()
     print(f"Release checks passed: lemqo {__version__}; {count} expected example outcomes; documentation and metadata checked.")
     return 0

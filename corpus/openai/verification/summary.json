@@ -1,0 +1,36 @@
+{
+  "recorded_date": "2026-10-13",
+  "platform": "Ubuntu 24.04 / WSL",
+  "results": [
+    {
+      "id": "cycle_decomposition",
+      "theorem": "OAI.ErdosGallai.erdos_gallai",
+      "checked_declarations": 41966,
+      "reference_bytes": 21712669,
+      "proof_bytes": 268967194,
+      "reference_sha256": "c539e184ae66820d247890f89c9a64674254f2607f7cc2bd0b0192681005d820",
+      "proof_sha256": "89582b2a88c7087399002a9be52a06a810faca81993b1bebecb57d860ae00b5b",
+      "status": "valid"
+    },
+    {
+      "id": "seymour_second_neighborhood",
+      "theorem": "OAI.SeymourSecondNeighborhood.exists_goodVertex",
+      "checked_declarations": 22252,
+      "reference_bytes": 6425597,
+      "proof_bytes": 120954904,
+      "reference_sha256": "00a2d909a927dbab3f3e3f7e3ace4ef55c42487cd2fdaae6c7603b43c506bb58",
+      "proof_sha256": "276100c5ccbd1a4ec446d7c16b54e7bfdfc161b4fc8e55e33715c6677d889e62",
+      "status": "valid"
+    },
+    {
+      "id": "borsuk_nine",
+      "theorem": "OAI.BorsukNine.main_theorem",
+      "checked_declarations": 70651,
+      "reference_bytes": 77807309,
+      "proof_bytes": 523141577,
+      "reference_sha256": "6c85465ffdf1ad2846bcdc764395fc5ebcd719d634262470c174df2449801511",
+      "proof_sha256": "a517143f0486e6a65ce91391a14ccf778f1eac187aba9ec3ed9465f768695b92",
+      "status": "valid"
+    }
+  ]
+}

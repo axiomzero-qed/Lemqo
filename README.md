@@ -8,11 +8,15 @@ against a separately selected claim. Proof generation and verification are
 separate jobs. Our long-term aim is to check certificates produced by humans,
 AI, and other proof systems through documented translations.
 
-**v0.1 is a working, experimental intuitionistic propositional logic checker.**
-It has ten fixed natural-deduction rules for implication, conjunction,
-disjunction, and falsehood. It can check genuine logical proofs such as
-composition and distributivity. It has no arithmetic, quantifiers, definitions,
-custom axioms, tactics, or Lean/Metamath importers. Those are future work.
+**v0.2 preserves the v0.1 intuitionistic propositional logic checker and adds
+an optional, experimental independent Lean-certificate check.**
+The IPL path has ten fixed natural-deduction rules for implication, conjunction,
+disjunction, and falsehood. The original `check` command and certificate
+semantics are unchanged. The separate `check-lean` workflow is limited to the
+repository's pinned, vendored OpenAI corpus; it is not general Lean support.
+Three selected OpenAI theorem targets have passed actual statement binding
+and independent Nanoda checking: Seymour's second-neighborhood theorem,
+Erdős–Gallai cycle decomposition, and Borsuk's projector main theorem.
 
 ## Try a valid and an invalid proof
 
@@ -43,7 +47,7 @@ For a larger proof and a machine-readable receipt:
 python -m lemqo check examples/distributivity.proof.json --claim examples/distributivity.claim.json --json
 ```
 
-## What a successful check means
+## What a successful IPL check means
 
 Acceptance establishes derivability of the **supplied formula from the reported
 premises under the fixed rules**, subject to correctness of this implementation
@@ -57,20 +61,49 @@ statement and its premises as well as the certificate. There is no claim of
 absolute safety, implementation correctness, or a measured total trusted base
 smaller than Lean's. The Python interpreter is part of the trust boundary.
 
+## Optional Lean certificate path
+
+The Lean path binds a caller-selected reference by hash, performs strict
+NDJSON preflight and offline Comparator checks for declarations, statements,
+primitives, and axiom types, then asks an independent Rust Nanoda checker to
+check every declaration. Both stages must pass before a result can be `VALID`.
+Its trusted computing base is larger than the IPL checker's. This path does not
+establish absolute correctness or support for all Lean. See the
+[Lean checking guide](docs/lean.md) and
+[selected OpenAI results and status](docs/openai.md).
+
+Build the backends and prepare the vendored certificate (omit `--only` to
+select all three results):
+
+```sh
+python tools/build_lean_backends.py --work /tmp/lemqo-backends
+python tools/openai_certificates.py --work /tmp/lemqo-openai --out /tmp/lemqo-certificates --backends /tmp/lemqo-backends/backends.json --only seymour_second_neighborhood
+```
+
+This workflow has only been exercised on Linux. Preparing a certificate does
+not mean its theorem has passed independent checking; the producer reports
+`VALID` and writes a receipt only after the separate offline check succeeds.
+The [verification records](corpus/openai/verification/summary.json) identify the
+three checked main targets and complete certificate hashes. Full exports are
+generated locally rather than committed as hundreds of megabytes of JSON.
+
 ## Tests, documentation, and releases
 
 ```sh
 python tools/check_release.py
 python tools/build_release.py --out dist
-python dist/lemqo-0.1.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
+python dist/lemqo-0.2.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
 ```
 
-Tests cover valid proofs, invalid inferences, assumption discharge, adversarial
+The original 49 IPL tests retain their v0.1 semantics and cover valid proofs,
+invalid inferences, assumption discharge, adversarial
 JSON, resource limits, CLI failures, and an independent finite Kripke-model
 oracle. The build creates a reproducible runnable archive, a source archive,
 and SHA-256 checksums using only the standard library.
 
 - [Certificate format, rules, and mathematical semantics](docs/specification.md)
+- [Lean certificate checking guide](docs/lean.md)
+- [Selected OpenAI results and verification status](docs/openai.md)
 - [Trusted boundary, threat model, and soundness argument](docs/trust.md)
 - [Architecture and audit entry points](docs/architecture.md)
 - [Research: Lean, Metamath, MM0, and HOL/OpenTheory](docs/research.md)

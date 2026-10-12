@@ -1,0 +1,31 @@
+{
+  "backend_config_sha256": "7c3d4aeff484e16ec7e068192bbe088f22357e138a94067c17490252be0e28dc",
+  "backend_sources": {
+    "comparator": "d03acab154d269c06e60e4de7e4cc85deebff94b",
+    "lean4export": "076e8e57707e813375e8f9da8bf989799ace9680",
+    "nanoda": "0f88b5f382f0f3f08aed4af0dd6c0e48c3fd7a44"
+  },
+  "binding_sha256": "23976f9b61618f6717d58ddfa2efbbca2785956a6584fcdb8fda50eb820982bc",
+  "checked_declarations": 41966,
+  "claim": "openai/cycle_decomposition",
+  "claim_sha256": "d870a7546747e0dc92150fcc7186e6a59f14ce86b1b3431711df94bbf6852ed3",
+  "independent_kernel": "nanoda",
+  "logic": "lean4",
+  "nanoda_sha256": "d00991bf29c331ce06f85b798b9dfceafee10599702e8a392633462c1487e2fd",
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "proof_bytes": 268967194,
+  "proof_records": 5005147,
+  "proof_sha256": "89582b2a88c7087399002a9be52a06a810faca81993b1bebecb57d860ae00b5b",
+  "reference_sha256": "c539e184ae66820d247890f89c9a64674254f2607f7cc2bd0b0192681005d820",
+  "statement_binding": "matched",
+  "status": "valid",
+  "theorem_names": [
+    "OAI.ErdosGallai.erdos_gallai"
+  ],
+  "verifier": "lemqo",
+  "version": "0.2.0"
+}

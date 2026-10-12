@@ -47,10 +47,27 @@ contains one verifier implementation. The independent semantic test oracle
 and review by a separate AI reviewer are additional evidence, not a second verifier
 or a completed human audit.
 
-Lemqo's project-owned checking path is small enough to read directly. We do
+The IPL project-owned checking path is small enough to read directly. We do
 not claim a measured total trusted computing base smaller than Lean's, nor
 that Python is formally verified. There is no machine-checked refinement proof
-from this specification to the Python executable in v0.1.
+from this specification to the Python executable.
+
+## Optional Lean path
+
+The optional Lean path has a larger trusted computing base than IPL. It binds
+the caller-selected reference by hash, strictly preflights certificate
+NDJSON, checks declarations, statements, primitives, and axiom types against
+the offline Comparator, then checks every declaration with an independent Rust
+Nanoda checker. Both phases must pass for `VALID`. The comparator, bridge,
+Nanoda implementation, build process, runtime, and input/reference selection
+therefore join the trusted boundary. Hash binding identifies bytes; it does not
+prove that the selected reference captures the intended mathematics.
+
+The current workflow is restricted to the repository-vendored OpenAI corpus.
+Three main-theorem checks remain pending. A 585-declaration smoke check and 25
+native attack regressions passed on Linux; these results do not establish
+general Lean support, correctness for every input, or completion of the 722
+manuscripts. See [docs/lean.md](lean.md) and [docs/openai.md](openai.md).
 
 ## Soundness argument for the calculus
 

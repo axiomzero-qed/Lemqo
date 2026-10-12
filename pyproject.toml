@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lemqo"
-version = "0.1.0"
-description = "An auditable checker for explicit intuitionistic propositional proof certificates"
+version = "0.2.0"
+description = "Explicit proof certificate verification for IPL and independent Lean checking"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"

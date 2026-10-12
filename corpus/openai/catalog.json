@@ -1,0 +1,1859 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "repository": "https://github.com/openai/math",
+    "commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+    "license": "LICENSE",
+    "license_spdx": "Apache-2.0",
+    "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "provenance_note": "Pinned source snapshot for three catalogue-listed main results. All three selected theorem targets passed Lemqo's statement binding and independent Nanoda checking; see verification/ and docs/openai.md for exact scope and trust assumptions.",
+  "candidates": [
+    {
+      "id": "cycle_decomposition",
+      "title": "A linear cycle-and-edge decomposition of every graph",
+      "paper_id": "../preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026/main.pdf",
+      "paper_url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026/main.pdf",
+      "scope_doc": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/181.md",
+      "main_result": "There is an absolute constant C > 0 such that every finite simple graph on n vertices has an edge-disjoint partition into cycles and single edges using at most C n pieces. The formalized statement includes edgeless and small graphs; it does not determine the optimal C.",
+      "theorem": "OAI.ErdosGallai.erdos_gallai",
+      "challenge_module": "ComparatorChallenges.CycleDecomposition",
+      "solution_module": "OAI.Combinatorics.CycleDecomposition.Main",
+      "challenge_spec": "lean/ComparatorChallenges/CycleDecomposition.lean",
+      "challenge_config": "lean/ComparatorChallenges/CycleDecomposition.json",
+      "definition_names": [],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": false,
+      "independent_check_status": "verified",
+      "challenge_config_bytes": 332,
+      "challenge_config_sha256": "f89705dba6bfbf27113cae83ae8000946bd6276b2afae4b19e28fa528dfb32d0",
+      "verification_record": "verification/cycle_decomposition/receipt.json"
+    },
+    {
+      "id": "seymour_second_neighborhood",
+      "title": "A proof of Seymour’s second-neighborhood conjecture",
+      "paper_id": "../preprints/A-proof-of-Seymours-second-neighborhood-conjecture-September-23-2026/paper.pdf",
+      "paper_url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-proof-of-Seymours-second-neighborhood-conjecture-September-23-2026/paper.pdf",
+      "scope_doc": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/173.md",
+      "main_result": "Every nonempty finite oriented graph has a vertex whose number of out-neighbors at directed distance exactly two is at least its outdegree. The scope excludes the starting vertex and first out-neighbors from the second neighborhood, and includes sinks.",
+      "theorem": "OAI.SeymourSecondNeighborhood.exists_goodVertex",
+      "challenge_module": "ComparatorChallenges.SeymourSecondNeighborhood",
+      "solution_module": "OAI.Combinatorics.SecondNeighborhood.Main",
+      "challenge_spec": "lean/ComparatorChallenges/SeymourSecondNeighborhood.lean",
+      "challenge_config": "lean/ComparatorChallenges/SeymourSecondNeighborhood.json",
+      "definition_names": [],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": false,
+      "independent_check_status": "verified",
+      "challenge_config_bytes": 358,
+      "challenge_config_sha256": "e2496b399005d74e7ae3a1467f3286120b706abe519e42d87880ca1679935778",
+      "verification_record": "verification/seymour_second_neighborhood/receipt.json"
+    },
+    {
+      "id": "borsuk_nine",
+      "title": "A nine-dimensional counterexample to Borsuk’s covering assertion",
+      "paper_id": "../preprints/A-nine-dimensional-counterexample-to-Borsuks-covering-assertion-September-23-2026/paper.pdf",
+      "paper_url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-nine-dimensional-counterexample-to-Borsuks-covering-assertion-September-23-2026/paper.pdf",
+      "scope_doc": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/lean/docs/156.md",
+      "main_result": "The main comparator target states that the compact set of rank-one orthogonal projectors onto lines in R^4 lies in the trace-one symmetric matrix space, has diameter sqrt(2), and cannot be covered by ten arbitrary subsets of strictly smaller diameter. The solution module separately derives an isometric image in R^9 giving the nine-dimensional Euclidean counterexample; that corollary is not among this comparator’s named theorem targets.",
+      "theorem": "OAI.BorsukNine.main_theorem",
+      "challenge_module": "ComparatorChallenges.BorsukNine",
+      "solution_module": "OAI.Geometry.Borsuk.Main",
+      "challenge_spec": "lean/ComparatorChallenges/BorsukNine.lean",
+      "challenge_config": "lean/ComparatorChallenges/BorsukNine.json",
+      "definition_names": [],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": false,
+      "independent_check_status": "verified",
+      "challenge_config_bytes": 306,
+      "challenge_config_sha256": "166280fe4f1677ef284ff142354470b9fb18b030ce8ff5632d9790c8aa5e4f43",
+      "verification_record": "verification/borsuk_nine/receipt.json"
+    }
+  ],
+  "project_files": [
+    {
+      "path": "lean-toolchain",
+      "bytes": 25,
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "path": "lakefile.lean",
+      "bytes": 15457,
+      "sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74"
+    },
+    {
+      "path": "ComparatorChallenges/README.md",
+      "bytes": 1060,
+      "sha256": "2ed835b3c59709be6feffe0dec54fc9783fb26aa22d35517475a82ef5199c555"
+    },
+    {
+      "path": "formalization.yaml",
+      "bytes": 79482,
+      "sha256": "5a8a164259591208886cd018416e61552665265ec9e20cff636f9d51117c2278"
+    }
+  ],
+  "lean_sources_root": "lean/",
+  "source_files": [
+    {
+      "path": "ComparatorChallenges/BorsukNine.lean",
+      "bytes": 826,
+      "sha256": "c097288178f7b71023274b9cc3e5b600fad2e9b4c85bd635b7bf06c307fc631c"
+    },
+    {
+      "path": "ComparatorChallenges/CycleDecomposition.lean",
+      "bytes": 850,
+      "sha256": "8c40255789147b218565654daa7d4f9ef39824b009d06ec9fb6beb7b45cae0f9"
+    },
+    {
+      "path": "ComparatorChallenges/SeymourSecondNeighborhood.lean",
+      "bytes": 913,
+      "sha256": "fa4a37831405b3fe7f6a88a2dce8918982195ee1757e05e4623055822d36ca98"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchEndpoints.lean",
+      "bytes": 12489,
+      "sha256": "b9f508fa150ee4180b5589514a917e11ea4d20528a41259e11284228895f6eb5"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchIndexing.lean",
+      "bytes": 21708,
+      "sha256": "5dd10ea708404173b8a60e086de39a9a63938c75badbafdb31bb0425160da072"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchLovasz.lean",
+      "bytes": 70133,
+      "sha256": "8b88880e74a764300e8411eaa6662377ea1722933b65e175e7b775c841e0b96b"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchPathDeletion.lean",
+      "bytes": 31794,
+      "sha256": "6345ea5cd484dd5c819820e4695f501bfa2dd89d197abc15901f41d9f4908f12"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchPreparation.lean",
+      "bytes": 51413,
+      "sha256": "f9c3bf8e297602d91358c5c0a9e13277edc63581db7f81f66a7a2b595b113670"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchResolution.lean",
+      "bytes": 22654,
+      "sha256": "a3a7fb57b6aee2ce1682c0f13d618abeff490886b3602db18030118be0002cdc"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/BatchRouting.lean",
+      "bytes": 54976,
+      "sha256": "b59516c44bec94e1b56b86788899211c65026f3af04a1f008761c153356f9503"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/CollisionEstimates.lean",
+      "bytes": 23872,
+      "sha256": "164e10dff3d9b722850f1f689918589cb18ecd50ddd056785bb20c5957fd9a61"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/CostRegrouping.lean",
+      "bytes": 20688,
+      "sha256": "290d0a17dba2d0307cbe582ee53adcb316990ddde3d9198396416f40cca5977c"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/CoupledResolution.lean",
+      "bytes": 40058,
+      "sha256": "6f4e75dd021691bd4ce076dbc5d5bacc865ce23170dc0027baa69b3110e8d53a"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/CycleLifting.lean",
+      "bytes": 38420,
+      "sha256": "1faf8d15cd44a3ff639f45eb8265dbd90aa0ea289d9c0c83a614e653502ec1ea"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Decomposition.lean",
+      "bytes": 23104,
+      "sha256": "4f742482cd903447ea3ce10f25f80f8dfbc84540e92877e771c4c08acb441853"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/DepthFirstSearch.lean",
+      "bytes": 8594,
+      "sha256": "5a25eaad1f55ccee0cae9e6200a1cc0dfa2b04b429cdd053fc405c7a8fa83097"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/EdgeSplitting.lean",
+      "bytes": 19322,
+      "sha256": "267f9f00cb7f4f43f3d00399c4c10bb226e013544fd1ff9391c077d960054136"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/EndpointPartition.lean",
+      "bytes": 12474,
+      "sha256": "c4d7364ac829d52001e1567b499f3764ecc4fec91889d400974fbee47947a62c"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ExpansionBoxes.lean",
+      "bytes": 30606,
+      "sha256": "08474a1cae35c28c3691033cb4de5bbceec2392dc0fd7545700c62073f0cc548"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/LayerCosts.lean",
+      "bytes": 18096,
+      "sha256": "7ddbf378c4883c08ba7ef4d4117cae15cc1ea2d32c9465921c8aa8d14b8c6e0b"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Lovasz.lean",
+      "bytes": 70139,
+      "sha256": "1fa567a0ccd24344fa6eae72a05c25d1090bca655f32aaa5991148a1f2fa7353"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Main.lean",
+      "bytes": 11208,
+      "sha256": "03edc7620d991daaa5629313c05395708b83ea44e5634a5ef69227ba2bcf77d9"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Pairing.lean",
+      "bytes": 37951,
+      "sha256": "7e8bbecd35e0fc9ebb83d54ed3574da5e70cc47f35752bcea15bdbc63f5e1808"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/PathDeletion.lean",
+      "bytes": 31755,
+      "sha256": "70408e8d6e9132193d9b88cf1a3341645068971027cb6ee5c872690e51f0582d"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/PrefixSelection.lean",
+      "bytes": 3900,
+      "sha256": "2ace7017770a5c9593fa87e907fea11d775cd0775c22ec786557628c5058a22c"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Representatives.lean",
+      "bytes": 11775,
+      "sha256": "4bc9e049246588a1b02582da448de42a2adcbebc780158af57ed097deea0f2d8"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ReservoirCycles.lean",
+      "bytes": 35872,
+      "sha256": "03b4280fec516953b650dfef2a9623d992cd9f6b398b13064e16051f53d974c9"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ReservoirRemainder.lean",
+      "bytes": 33729,
+      "sha256": "e66d9790fbf617721598ec86278bae7418f9ad93cb22b2b9d0164a49a11e3408"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ReservoirSampling.lean",
+      "bytes": 18715,
+      "sha256": "296d2e743613f0338aaeed65919709193af57f60375e0f810c5a5836091d7dfb"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Routing.lean",
+      "bytes": 52394,
+      "sha256": "bda59fcac1565efb22c3bfd21c59b97b8708457e2a3aba334e2e7cb84e8f8586"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Sampling.lean",
+      "bytes": 18663,
+      "sha256": "0da57bc89c09bab54b5007e3b30ead035aebb369076a3a0929c0e7d67824a048"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/SamplingCuts.lean",
+      "bytes": 36357,
+      "sha256": "eb67aed05e2269fcae158355fc57affed794d9eb5410464315ec369e07553079"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ScaleDecomposition.lean",
+      "bytes": 27928,
+      "sha256": "305492ed8166f07a1dbf8d768767efc39416b10e48ab0ced695c3c0e82574fa0"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ScaleExtraction.lean",
+      "bytes": 28908,
+      "sha256": "86e67577ca500858e49b367a3044bf856ebe1f5e5f0b3513657b6510a08cc76c"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/ScaleHierarchy.lean",
+      "bytes": 27254,
+      "sha256": "d0164e09f11e039d7a532026da9aaa4dd16b8cdfcf8c627c31ec995f9fbc8d78"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/Templates.lean",
+      "bytes": 35746,
+      "sha256": "c8e63c3241a525021205d940a55b1e61f46b0e28630c1ddc0df2b0998806af02"
+    },
+    {
+      "path": "OAI/Combinatorics/CycleDecomposition/UniformLayers.lean",
+      "bytes": 15673,
+      "sha256": "30c59f4a7cdcbf9f5e0f782ba1135b50e27bf9a5eec0a10bb71841474a2d98b1"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/AugmentedGraph.lean",
+      "bytes": 10471,
+      "sha256": "03cbe7c240edaf224e290718f45b079deef2d3face40c234e979c717125fd30f"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/AugmentedMatching.lean",
+      "bytes": 4371,
+      "sha256": "08e03d9c3061e7769657a9655349c4421e54bd0d44b4b58b09802eb4e2c6e100"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/AugmentedRankBound.lean",
+      "bytes": 2091,
+      "sha256": "6d7d740e10db319829b45dd52fbfb29222ef724c0586185aaf99ef24b2d94a06"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Basic.lean",
+      "bytes": 6065,
+      "sha256": "51c1ea0cac65b4a2a23917704a3e0c1af21cba9d6f6b3ae9e018877727c4d16c"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/CompositeRankBound.lean",
+      "bytes": 4418,
+      "sha256": "5a7f1fec57c6756e3f404c382425fccba3d45af3a70a05950a8f337556422d38"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/CoverPruning.lean",
+      "bytes": 5967,
+      "sha256": "54751b3b24546eeca42e5eb277e3fa44a7aceb6e8227123ec133df314edca707"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Deletion.lean",
+      "bytes": 10605,
+      "sha256": "3252054785b45a24b8732981624a9496b385a0d19b30250594ea8dcf201416fa"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/ExtremalCompatibility.lean",
+      "bytes": 8065,
+      "sha256": "bfe67c57bacf7c26e649c61b28808901476d16945a8c785623e778f9ea44534d"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/ExtremalContradiction.lean",
+      "bytes": 1918,
+      "sha256": "6ecf0639da53e9a3d3b26c8a7cabe102fc29a8b3514e69c37e293d68e8e4340e"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/ExtremalCounting.lean",
+      "bytes": 2724,
+      "sha256": "e94b3046fdd9f14c4ee4448d275ad608518b56e40b6280379b79857e938c5c4a"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/ExtremalImages.lean",
+      "bytes": 3486,
+      "sha256": "ae07bab19dd64bd36c8490d89099c1b87111f7581b611d0a1b844ed7add1c2c4"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRank.lean",
+      "bytes": 5246,
+      "sha256": "d1da077fb07861f8616470caf4111c4b035417c2106ffd33b30ebe7a7888b343"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankCoefficients.lean",
+      "bytes": 2937,
+      "sha256": "e96db3e110723829af17365bca618b7a77e1cfb914cfc5181502bfb35b0d0175"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankColumns.lean",
+      "bytes": 2268,
+      "sha256": "53e72ae6b7f9ae0d64d77f2455d6e9ccc3624758aec1e393ed49109547830061"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankFamily.lean",
+      "bytes": 4270,
+      "sha256": "6e8427287e613a48f9a926ef3680183636aa3d4fe0d89f0a460359e75e4d1a1b"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankGlobalMinors.lean",
+      "bytes": 5831,
+      "sha256": "200b06a08667c19fa9e1ee74adb8fe117bc90e808a3fe97be393d46ed81e67ab"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankMatching.lean",
+      "bytes": 4410,
+      "sha256": "745d418ecc9a66e3343d3f5787e060a7586fa523ec123ff80391f4171a82e799"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankSelection.lean",
+      "bytes": 3571,
+      "sha256": "a272dd80cdba3d62039f2742b60fa26763e07b9d67e5fca59a917035b542c741"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/GenericRankSupport.lean",
+      "bytes": 2055,
+      "sha256": "b24888b0e1d06a98cf58f8cd9cc18cbd6991c33ca41dfea3026e30730a3b1219"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/KernelBasisLifts.lean",
+      "bytes": 5046,
+      "sha256": "6aea5353ede2d1d4b0c2911d3c76976cde93b36b17e80cb34ce36feb5cbeb73c"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/KernelConflict.lean",
+      "bytes": 1801,
+      "sha256": "d9f9e90cb3c3017399df843447e31e05327ee8340ad205627859e0f407fd4512"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/KernelIndependence.lean",
+      "bytes": 5743,
+      "sha256": "c3a5afa10668d5c0a4b567134342c5f8a39ede4e46c9a0c2c7b875c0eb737fb9"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/KernelRestriction.lean",
+      "bytes": 4350,
+      "sha256": "4d0b9dacdb36b10eb6a7d3bee55e7c203b98350b4d49d247e714814d45ab725e"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Main.lean",
+      "bytes": 754,
+      "sha256": "44637990cc5daddcb30874368807ce7a0531ac1bbbe6a21751734b291f9b35f7"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Matching.lean",
+      "bytes": 5538,
+      "sha256": "7b3716452f60c97d1e4d4a4a432d6c1bf417c07f791a1c5b53736b74d356ffe3"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MatchingAugmented.lean",
+      "bytes": 10893,
+      "sha256": "2a9bc13b90459ca480e0f352283bb6fa9b183d77fa21f659edee98b064b0fc4d"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MatchingCover.lean",
+      "bytes": 8714,
+      "sha256": "d1e35ef04f1bb447f72d5d9232618c47a38772dc8c1d52ec00e3d0aa7bcada9c"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MatchingExchange.lean",
+      "bytes": 5323,
+      "sha256": "7f0f44bbaa8b8a49023272b57adc50ff70e5990f43ae449622e7527e10ad9ac9"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MatrixMaps.lean",
+      "bytes": 2424,
+      "sha256": "0f2790c1a5d5da38b15f5e0a7979998c90d96ef0e8a006f45c38b2b52d221af8"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MatrixMapsCommute.lean",
+      "bytes": 4818,
+      "sha256": "63774931970d04bb5d66c458d666a13eeca225accab7f82f238c6631b3fc5acd"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MatrixMapsPolynomial.lean",
+      "bytes": 2952,
+      "sha256": "dee84acf7a318b1e6bf6ed9b045037ead560db7bf81328a1c7a6b373b66c409d"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MaxSupportKernel.lean",
+      "bytes": 4033,
+      "sha256": "82f9128b783662b2560e456f71f200880f77cf84c65ab199b8810630975a5910"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/MinimalCounterexample.lean",
+      "bytes": 6618,
+      "sha256": "66ff0113a483642bc6e71d2de57f620c46e39ccab77aae1cb79439f2e9c8da34"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Model.lean",
+      "bytes": 778,
+      "sha256": "3bbdb8b2c7f753ac457f4a94d4cb604630ebf0cedc0d10d05f24b48bbbc2d52f"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Pruning.lean",
+      "bytes": 587,
+      "sha256": "ba64f4f8fd180c1a3634cc1dbb8907267075ed3a496d2c39256c8f975e82e3a5"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/PruningDefinitions.lean",
+      "bytes": 9245,
+      "sha256": "baf1b2938d1d5e9b866517951e728aefeab1c144e952d2a1e326d260ca60a74d"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/RankBoundFromMinors.lean",
+      "bytes": 2312,
+      "sha256": "01776b4068c86fd48f6b63326a653a8d7ebef68a28ace0745bf30b83947ce574"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Reduction.lean",
+      "bytes": 1038,
+      "sha256": "47db979f728e38a683d7cbea7350bf5580a5298332e81241d57692d1ad116660"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/ReductionCore.lean",
+      "bytes": 2002,
+      "sha256": "4e412524c70ce9d7245700cc18116479cab8edd3c5de3af69d014b49d63b39d8"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/Reindex.lean",
+      "bytes": 3451,
+      "sha256": "9c4a2cc050c5dad8b04fc28cb7a23e8fede9735127911313d69b6325812f4a21"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/SubsetAugmentation.lean",
+      "bytes": 2074,
+      "sha256": "0cc08e2ece7abe923263673f1f8dc7c89e8c136926136846250e1da44ec24e9a"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/SubsetDeficit.lean",
+      "bytes": 2133,
+      "sha256": "3b8c1806017edfa7a6f53d7396441c80904939986416107cfcf4a22430364fdb"
+    },
+    {
+      "path": "OAI/Combinatorics/SecondNeighborhood/TransitiveBlowup.lean",
+      "bytes": 7405,
+      "sha256": "946cb494c10f69eaf7edd51b476d021e51245969f5c95ac5870c6a95f225fc46"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Counterexample.lean",
+      "bytes": 2277,
+      "sha256": "d0eba420bfb1ea328656febc8f52fdc9709831729d114ce1785d2fff18da9ae8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases001.lean",
+      "bytes": 24844,
+      "sha256": "98b830a8244031b0a7bb02cd9f20d052cc10a14642e68337acc673779c607aa9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases002.lean",
+      "bytes": 27178,
+      "sha256": "62ff992d44137f7a034f530f677da693c36e298f30e144759b3bc49f68572dd8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases003.lean",
+      "bytes": 27935,
+      "sha256": "cf8f76ff2cc6594ff42ae0476fd0d9ce1adec8bb30471b91ed8feaa017bb709f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases004.lean",
+      "bytes": 27347,
+      "sha256": "9891ec94f92f36389996e9e261b7b8063560c076dfcfc63730d370e2edd3dce4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases005.lean",
+      "bytes": 28717,
+      "sha256": "6cbce79957d09d463c0ee7ae392d754c5ef1981e1b2f5659e789545471337086"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases006.lean",
+      "bytes": 25592,
+      "sha256": "6bf9d359666b0295d490b1b14f71b32b10302a3709898b62ad95f48eb4ebd15e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases007.lean",
+      "bytes": 26433,
+      "sha256": "6b73a84cce9e87fc55fe615bb0de93eded06d3be191d492bfe35a65d4811ad65"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases008.lean",
+      "bytes": 25544,
+      "sha256": "bf57f3bd79b25998120b3ef3047f98de5463eb7169d4c74c9e1a0895b01759c3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases009.lean",
+      "bytes": 25592,
+      "sha256": "673e25c1d80bef0a5e12f2c688696934c1d03f8c53901ee946edefd632975a66"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases010.lean",
+      "bytes": 26866,
+      "sha256": "4a33e91c39c732b7031c052b94d599d0e4f85cb0cb82b9587184d919002f7b45"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases011.lean",
+      "bytes": 27983,
+      "sha256": "f67782b8bbc26de7d1d07a263c82fbf79e4e50bcb696b13d8de866660802c2dd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases012.lean",
+      "bytes": 25678,
+      "sha256": "388dd01028ea94065f40e99e13888b49d9007721f38c854be7b2e4d078e2c8a5"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases013.lean",
+      "bytes": 27097,
+      "sha256": "c713f0bc56757ee89cd590053098a3c9bea92090ebfcbcf313866ee780356848"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases014.lean",
+      "bytes": 27745,
+      "sha256": "92f50961bea49eb48e31ad6e466974c120674f5e1ada0b5b234e7482f1eece1f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases015.lean",
+      "bytes": 28452,
+      "sha256": "5573147bef91778119af294bea95a650dde5a1096e515cb1b47cee13c04839fb"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases016.lean",
+      "bytes": 28094,
+      "sha256": "4e1a1f8a947640d4a040ee993fe3e9162bad8a714c5535d810c73e93f529b2c8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases017.lean",
+      "bytes": 28779,
+      "sha256": "ec5b0d8741a74ae8d756902aedb3bbaf09ccb37bdac4ab223c1614791616d352"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases018.lean",
+      "bytes": 27789,
+      "sha256": "09ff75995aec27c9fafd28f647a9152dad204021389eb889d170d3364f4871d0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases019.lean",
+      "bytes": 27889,
+      "sha256": "280275898fa293b2b28905598f8e2918c66dc4d160cf2b93b5b4a1ae740b5a4a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases020.lean",
+      "bytes": 26143,
+      "sha256": "24afcdf4b35eb23fd77ea34fabc0355b5041ef63ee96e8169490ad609301b6b9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases021.lean",
+      "bytes": 26016,
+      "sha256": "e8897e67cc4cb82deb281151f41f9018300831918fc05d15a974d433131ea4f5"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases022.lean",
+      "bytes": 27903,
+      "sha256": "bd9f8c42b9087c592a1d581d4aa28a9e6ec77d6939263b5e749578ef0c9c2ed4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases023.lean",
+      "bytes": 25575,
+      "sha256": "932669489a0825fc9db2497e33d4856584069c6eb1a7f8288bfc722efc3f657d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases024.lean",
+      "bytes": 22324,
+      "sha256": "ab6a0126e6eb325c610ba7475846b6f98c74e87fd0db978ca38989b3dda00e01"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases025.lean",
+      "bytes": 23264,
+      "sha256": "528f9e2ff27ec6fbb094b5439832bc27e093af6f7a7b753660fab65a310d594d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases026.lean",
+      "bytes": 23916,
+      "sha256": "4c2ed9df3c87e1ad922a03e8e2635c873ebcae488696e553260b7052445d1fb2"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases027.lean",
+      "bytes": 24197,
+      "sha256": "2b25e6afe07d38e5b66f3c7394a0058e2ded47f1399f7406d442ecece07c2da6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases028.lean",
+      "bytes": 23881,
+      "sha256": "3cb978af799281cab413ba7fc98b9e6f6ee910c63edad32e8de7d0e7a0d030bb"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases029.lean",
+      "bytes": 21711,
+      "sha256": "fa714bb68b3e35e0883c9cede1208ce39b86ff8eff561206e9e100b61466e531"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases030.lean",
+      "bytes": 23934,
+      "sha256": "be4bf1110d70edcc8ff675e7774e893458631794c4055498ba4ae77aec11865c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases031.lean",
+      "bytes": 25818,
+      "sha256": "2ac1554fe25fcc31b4eec5419be2ac426e19e4cd711b415e56912c1f6d2d2f6b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases032.lean",
+      "bytes": 24500,
+      "sha256": "a879540ece6690891b9abad8b9f55ac6182221f2f8f570536fe0761146d2368b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases033.lean",
+      "bytes": 26111,
+      "sha256": "0c58ad6e2de49d9c278ad82cffcf96f39e789154b6fbb2ac76deb58412e71028"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases034.lean",
+      "bytes": 24254,
+      "sha256": "56767a29fd3205823d0c20a598fbe47028fdd3285c044c53279339085d06a647"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases035.lean",
+      "bytes": 22987,
+      "sha256": "825172a4e058b6c7d04267af677b512136bfdd555bc70cc93d37305d83aa6147"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases036.lean",
+      "bytes": 23021,
+      "sha256": "fd038a74ef3dcedffedb50c9861aca4ade886eafcd6ea5520591f085c845a0a0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases037.lean",
+      "bytes": 25177,
+      "sha256": "95d37b815d39e5bc32f901448ec738a057ec9164ee715305ca1feebc4b964a65"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases038.lean",
+      "bytes": 24209,
+      "sha256": "53f3804c344ba45c82751cc209f82d7cfbb02a3703d3725712b1cecdce7f7fd8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases039.lean",
+      "bytes": 26080,
+      "sha256": "23df6f4ede7c9dcd4c706dc414ebd72e53934280ec9b8e268f181b0af3c72256"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases040.lean",
+      "bytes": 24202,
+      "sha256": "d967de3d9d865f15368497488bdd24e790fabc577cd726bced368d440e5543e7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases041.lean",
+      "bytes": 25781,
+      "sha256": "51b6514e1507ad8349a3e5a25696628463061bc753cafce10c87b9a8874aad4f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases042.lean",
+      "bytes": 24199,
+      "sha256": "aa6772e0afa0462a1f90f2088e283ba9ebc803840388e84b9e669f5abe8e2e64"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases043.lean",
+      "bytes": 26123,
+      "sha256": "fd3ec337533c860259ad8a0706518292ee6db14c2cdbd8bebda49edb5ac8079f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases044.lean",
+      "bytes": 22060,
+      "sha256": "18fdb4e41373df34058f8c93f8732bbcdc39768a65a371084708f4edaae433ee"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases045.lean",
+      "bytes": 23374,
+      "sha256": "480a6431da69acdcf42fc5711ea64f7b89e8fcf6a0c9d54caf09f506b2931aab"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases046.lean",
+      "bytes": 24943,
+      "sha256": "f0a3309a78555640cc76c7a4fdbeca5afe31893c759259f298e5b3a2eee06ade"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases047.lean",
+      "bytes": 24885,
+      "sha256": "26f452299a905ffe55d9d3b31df0c585bc57e7f89039fa2d9e8a7f8800d2f767"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases048.lean",
+      "bytes": 24909,
+      "sha256": "8d9d724762ce0d730f69219630106061a9820d64e75101e0b4873218a0e7fee0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases049.lean",
+      "bytes": 23953,
+      "sha256": "767caae7abadd5fd8d31e6ff1f1525fdbc2824d67c48a9729690e05678366b10"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases050.lean",
+      "bytes": 24870,
+      "sha256": "ad93bbee71954fea9bd4415e0d0746a100c63dec97c5cea33b665d089b340eea"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases051.lean",
+      "bytes": 24630,
+      "sha256": "5d11097422cdc76e3eb02652f8204ba43cbbda79ef49d83ce1c448841fbd4e78"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases052.lean",
+      "bytes": 21475,
+      "sha256": "3f3b6b45462f5d0e664b99d235fb43c06ceb1d2bfe5d7f3d117f548118d38194"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases053.lean",
+      "bytes": 25181,
+      "sha256": "a26c31d306044a82bbe139cf38ec96918fcbd47d816446d28ba8cd9c937d4c4d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases054.lean",
+      "bytes": 26077,
+      "sha256": "ffb81516b8e1a93c359adf3dd0fd61d5189f8bede4a493ddb0c1eb4ba8fda75e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases055.lean",
+      "bytes": 23545,
+      "sha256": "1065c1bc346b321993f42b9420ff9f2b5ba3984f86a5d803fa53ddadbc753e09"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases056.lean",
+      "bytes": 24847,
+      "sha256": "7f2e99c1091415a80ccf315d5b3ffb6881c8be5741b24954cc009d3aa7d00bd6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases057.lean",
+      "bytes": 23849,
+      "sha256": "10cdfe1ec8b979a117e7d9d450ca59bd0d62c0b7fe991a70964cf8362073ccb0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases058.lean",
+      "bytes": 24911,
+      "sha256": "e2355a5a25200cfc3926195de7e41410fb75d913d155d185fd59664ff19d3d82"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases059.lean",
+      "bytes": 24248,
+      "sha256": "46ccb04ac0f076612027e548a923398de1ca9ff9a18f9112681e755cf45b2ec3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases060.lean",
+      "bytes": 25233,
+      "sha256": "5201742af97465f56440e0647e1f51a035c824b68d5621b73b84736cf650f14a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases061.lean",
+      "bytes": 24849,
+      "sha256": "c3c476c43a7ec27df0177ed3bc86d31dfe490925662fdebeb8cd14480bf18ab7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases062.lean",
+      "bytes": 25172,
+      "sha256": "5a52b6d90fe0c0eb14d61e6d6211c9d6430c643ec8057c40d721706962ed04ce"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases063.lean",
+      "bytes": 25090,
+      "sha256": "c518f6e37358bccbc5835fc0586f400217cd472a29790b992f1c3126d039a26e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases064.lean",
+      "bytes": 25132,
+      "sha256": "f912bdbef89ad7bc581edfc5d933ca0a9fe96332d29e5ca95040f4821df05f33"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases065.lean",
+      "bytes": 25074,
+      "sha256": "0efe0c39a4cb781de6f4e97df923161bb4f67cf6eb2dd134b1ef2fb319a1f495"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases066.lean",
+      "bytes": 24504,
+      "sha256": "1cfd11f802e86df9010b9b6fc6b3b44cde706f0f45fc515e5ef1781c76c3064d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases067.lean",
+      "bytes": 24750,
+      "sha256": "574636b33132066cb1c4f495380356eac507fbe7aea3f9750869af10d33e24db"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases068.lean",
+      "bytes": 25084,
+      "sha256": "ea80cce45f0008b08905700f1fddd99acf892b5939915fa0d5ef8aec284f89f4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases069.lean",
+      "bytes": 23848,
+      "sha256": "b767299769547685e6fc43fc87f7d122dc25fe387f6836ca397c8ada15556b33"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases070.lean",
+      "bytes": 22916,
+      "sha256": "3f1bebe0b841f3036cbe5a6e616da782c21083518caaba4f2b97f635d61010b1"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases071.lean",
+      "bytes": 25721,
+      "sha256": "02f4a2f8a2d66acaf23faf73541d12734b875ccb9dd59d308cb2dd64220b84f3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases072.lean",
+      "bytes": 24145,
+      "sha256": "3fc83a13c4f68669830fe222a52e55fdf61506373b5556eacbfe51bf84c9f6f3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases073.lean",
+      "bytes": 24187,
+      "sha256": "4914ba9fd53d496555bb271fb3890b120453db24a232c7965503916d72820ebd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases074.lean",
+      "bytes": 23871,
+      "sha256": "95d170d50985d9a42533135af10afbc051d2d779fbb4721d2cb59713c1c952dc"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases075.lean",
+      "bytes": 27537,
+      "sha256": "4e09e650423e20c06b49efe599bc133bd68e6561e04dda2972edde22743083b8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases076.lean",
+      "bytes": 25298,
+      "sha256": "4c3fecdc3f60484125d46d58377d3a788238f17c098965661d023964bdfabf0c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases077.lean",
+      "bytes": 13648,
+      "sha256": "c46f2360f768a57da631947ebe43cc43f05627235b17f453c9e0a81665d280c5"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases078.lean",
+      "bytes": 17175,
+      "sha256": "a91834cc8283bdeace8a7d3be321f299bea973c4ccd5e5abbcd9509837d97464"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases079.lean",
+      "bytes": 19117,
+      "sha256": "d5ea11f048170254cb665fe2741aedde814704f4bec04573495644525e3bf80a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases080.lean",
+      "bytes": 16403,
+      "sha256": "51ce261dbbb0b78ff905b556735a138514d4d519c1d4d7a69e33d4e7b09580f3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases081.lean",
+      "bytes": 18007,
+      "sha256": "84f263e303289417dd9f5e327594df56bc044d0e900f47ec6619bf425e875844"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases082.lean",
+      "bytes": 14225,
+      "sha256": "b6edec6fabf03868a7ac7e42e59d9dddcc68d79b08b7a61b225628e47fe3bf1a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases083.lean",
+      "bytes": 19132,
+      "sha256": "27eaa7e3795f7648026387af858b4c2ffb89297415a801a42bef8f826645f0d0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases084.lean",
+      "bytes": 15728,
+      "sha256": "fb29ff49efc3ee9948d3dc805c84ccb9bfe1b27ef75aabd9db99424c08f556dd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases085.lean",
+      "bytes": 15748,
+      "sha256": "d90b52b600a2f0dd51110f41300bf3937a5ce755e5153a0f3deaf1cab08b1aa0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases086.lean",
+      "bytes": 14289,
+      "sha256": "84d696c63e9d99395de3a10dfc908aa1df364eca2806d94596eabbe7c6e9e974"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases087.lean",
+      "bytes": 15485,
+      "sha256": "714587b00bb7b5e9711b3e3347b09e2a8f4ca7534824bb47fd55273e8e207732"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases088.lean",
+      "bytes": 14081,
+      "sha256": "3508697541d192ce7a87ac827ccd56d959e5fe4ffaad653f481a80678e025b8c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases089.lean",
+      "bytes": 13389,
+      "sha256": "e9b6b5f213b061686e49676531bc1ac207762539bf98c278733f0fe059833603"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases090.lean",
+      "bytes": 16781,
+      "sha256": "a9c253af4d8ab682c3f8c37e4d5763652364a78974af346b2f43d0cc6d26ecef"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases091.lean",
+      "bytes": 16207,
+      "sha256": "10d95fe6e4947837193d07742f908f0124c7012bbeeca55d4eaaf15798e27071"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases092.lean",
+      "bytes": 15620,
+      "sha256": "84dbcf624e0f17f675c2e3ce606f4818334b89d894060f1e5bc4e4c667fb4ba9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases093.lean",
+      "bytes": 16807,
+      "sha256": "782b0bc2c008e20a5ac320849b7a02a9357df152360f54ebee94e951e7582347"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases094.lean",
+      "bytes": 15391,
+      "sha256": "a31fa8da51f190387a9b394213df6aa050ffcbb162dc99307bf3484d2c970a58"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases095.lean",
+      "bytes": 14083,
+      "sha256": "37333ad9d4bb25441fa7c8a1a7087b693c898749847dc01a706a65262210272c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases096.lean",
+      "bytes": 15007,
+      "sha256": "2339179208913e7ac04f7c99dfdb87327b30b43313599fdbe49cfc7c6777d03e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases097.lean",
+      "bytes": 14648,
+      "sha256": "df86358a0a6e3c2a40fbd61c8526ad698ebf3e84c11e11a59898f0939ed77db6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases098.lean",
+      "bytes": 14739,
+      "sha256": "500bbc524074b405584b2e49ed5f3c8596c0b86a1323943b6a42fb55cdde2aa7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases099.lean",
+      "bytes": 13990,
+      "sha256": "1c077c0c30cde38bd1b36d0f403125656c8a538499fc5194842336c774a8a3a8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases100.lean",
+      "bytes": 13047,
+      "sha256": "0afcb1620f1f49f0f9c194d487b35a802f160152315e192c37642bdab71e2357"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases101.lean",
+      "bytes": 17435,
+      "sha256": "9da615ecfe4197618f7371c1bacc3fa43fcee3215f4e93f00ed9f881c04dee3f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases102.lean",
+      "bytes": 15725,
+      "sha256": "c4370a83239b0b3fb65e2bca2e2f5ceeba1226bd7934a024804d42a15ad62949"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases103.lean",
+      "bytes": 14827,
+      "sha256": "cb73ad142500b18199d316b266aeec5abc788676c9ea47efcd040f44017ec326"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases104.lean",
+      "bytes": 13227,
+      "sha256": "b55ff24223552c4623eead5c0c986742e5afd1245b10653e3a3f51eb36a5e688"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases105.lean",
+      "bytes": 13524,
+      "sha256": "bf5ea5dcec4c83c1d3763c9ece2aedac78ef427d9c4b0b0e59b6efbdc40a68db"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases106.lean",
+      "bytes": 13113,
+      "sha256": "9420debea6227473842dea26de5a708850e94048b5b1b0c800bd4fdb3c830add"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases107.lean",
+      "bytes": 13212,
+      "sha256": "22317eea857ad0c2289c02a4e7d4cf631ccc0fe73e394a6daa89ce88a7da1d42"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases108.lean",
+      "bytes": 12936,
+      "sha256": "3a7a7557ee36d9d1582fc7168de638dda2fedb9e4ce06ab8f93857c4300bfbb4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases109.lean",
+      "bytes": 16289,
+      "sha256": "80285a1f285828475786af3f7fa449eb6373e4f72c3010c0db00445983546c25"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases110.lean",
+      "bytes": 14318,
+      "sha256": "d08743cb4394b891a2237311e17b15d460d2cf6b61c09fb4515451c15416e3b7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases111.lean",
+      "bytes": 14865,
+      "sha256": "bf1426a12469d8797bd113010fbcefa484f9b82ce822633b87fd5685a8f3951f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases112.lean",
+      "bytes": 16602,
+      "sha256": "f5898d980b2215e0edf88b50902833bc9f8fc787b61cbeec7bd1ed05ec281cee"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases113.lean",
+      "bytes": 14109,
+      "sha256": "dee772078522574bbc7df8f87306347d71832a7afeeee4555e128cb23ac2e7f6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases114.lean",
+      "bytes": 13473,
+      "sha256": "315559cf95d83099d0c5b040d0e8f1477f41539997a4102c5c7a0529f3f8c075"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases115.lean",
+      "bytes": 14166,
+      "sha256": "c4bbf72539cf33c7be466f2f9b14c8f8fd14410e36d7f8cb9031e254e8cf2638"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases116.lean",
+      "bytes": 14345,
+      "sha256": "30d8a36c28da66c5d8cd0bc461cf94c1359352804c9d7e3b68f9a933a82ba66b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases117.lean",
+      "bytes": 15505,
+      "sha256": "3d450b1c1fc16f526e5334667a2da931fddd6a7259a2b5a8306c19f894e20c7c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases118.lean",
+      "bytes": 13921,
+      "sha256": "37f94174e06ab64ad769b50aa15b295f5f1643c1d830e16aaec8b5ebb2bf29c9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases119.lean",
+      "bytes": 13318,
+      "sha256": "3dbfb2fa6e833d9a7ae9aab6d0e73ff9ed84c3d1442266027ec942c026666478"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases120.lean",
+      "bytes": 14483,
+      "sha256": "2acc4c9182259691cbd374d9d3ff470e35ac89773abf2182d071d3a394de3651"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases121.lean",
+      "bytes": 14886,
+      "sha256": "b3f1d3cb766ca2a7a3401a9e34586e2395ef0a550cdbb267c48b688e0a199941"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases122.lean",
+      "bytes": 13207,
+      "sha256": "38e9794f21548cfb7ef018e38bf9ed8cf0b99bbcc5120b7e935bd5763ec7a047"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases123.lean",
+      "bytes": 15228,
+      "sha256": "f766f6f5dad2c894c7079f9accc502e02923eeaea1f751b9389e8769c99cc367"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases124.lean",
+      "bytes": 15223,
+      "sha256": "046b4149b9ef3e424c72f866e04bd2514dc6493a831de6006839a6e9ba4026c9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases125.lean",
+      "bytes": 14880,
+      "sha256": "f1d9d573baa012a12ca72a613cba95981e9e9ebf690ef5332b58e9fc7f5a28fc"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases126.lean",
+      "bytes": 16177,
+      "sha256": "e7e99b7ec1bd9ca5171fa08a26f4cbf25f9729ee51923d8342572ebbcba3c93c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases127.lean",
+      "bytes": 16247,
+      "sha256": "edf5d9d57b034cd29e0855d62ecddeeff4b147b092c805d48f9f0a17fe42084a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases128.lean",
+      "bytes": 13761,
+      "sha256": "cfa8297d04b58e382076e55160106c3363bb99cfbaa969a6367f0702bed8d4a4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases129.lean",
+      "bytes": 14081,
+      "sha256": "77a3ffbbebd3b5fb2029a6dc379cbe2034690235f624d11b19e0d0fd51dbe3b3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases130.lean",
+      "bytes": 16777,
+      "sha256": "f60ae773f0eb1ce0afcd9204326a01ab5e80fafa5a78a850ec965691a4125a67"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases131.lean",
+      "bytes": 13734,
+      "sha256": "937099b44b768c27f0d2f400b10c4ed42ee526d06462aac0444182ad321d1f00"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases132.lean",
+      "bytes": 15091,
+      "sha256": "906265fb6722736eb712694d619e4609b60a40afc1092c492056a45b81364585"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases133.lean",
+      "bytes": 15578,
+      "sha256": "819b93ed0dad392b933b3921d34de598c68ec6ce71e3813dccc0160078b660bd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases134.lean",
+      "bytes": 14980,
+      "sha256": "f0a05900a3cf503c9641feb44a727d29500971e5c1a4d94b3c47b53824d30098"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases135.lean",
+      "bytes": 13203,
+      "sha256": "09f11a92cd1417aaf84d6809c8472ac7691481e46b334eac62f013007b9836bc"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases136.lean",
+      "bytes": 14579,
+      "sha256": "597d5ef2040a72a9e9de96dd8c1fb56fd14a54b4f43ac7f4d93ac6f448566c48"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases137.lean",
+      "bytes": 13245,
+      "sha256": "e0ffa4bcc8538a3979b9399cb7afc1acdbe48b7a6204110b1f85768be51bf758"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases138.lean",
+      "bytes": 14504,
+      "sha256": "0b7eb910e3eb9e022ff7509ac9b3e652943b3fe81383cace20964e279d6cc0cf"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases139.lean",
+      "bytes": 13311,
+      "sha256": "d54c5daf2fd7a81cc877b6528688ebbb17d2c06b1b5bf6febb99680f4d86405d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases140.lean",
+      "bytes": 12743,
+      "sha256": "7a8054672986c36305ad51f057468dcea241fcbe5ba8e51156553e4b2908b842"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases141.lean",
+      "bytes": 15826,
+      "sha256": "0420d0b9307bfb650a4e6266c801fd50cde415247841b7a68a91ea129bf9163d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases142.lean",
+      "bytes": 14588,
+      "sha256": "384a7a1256a9960644c4db5549a0c28f5f424329590f2f30a6742ca45c5ff3c1"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases143.lean",
+      "bytes": 15860,
+      "sha256": "0cdfb9dca8e7e31e2acbd30330e624f8240c77454cc8bc403f6f2045f55a1ed7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases144.lean",
+      "bytes": 12358,
+      "sha256": "7b1d5719a2dfdabe0be1313a594afcfe0bd32f48297f86355da98c0283557c4e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/FiniteCases/Cases145.lean",
+      "bytes": 2676,
+      "sha256": "cb08b049ca67b43f65131392679699a7f6431a29f136dc422ad335379ed1aa6b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/ChartRegular.lean",
+      "bytes": 4656,
+      "sha256": "110f6bf75575c2e1202375723cd0d59b6b15fa03ea59ee2f531e228f575e4556"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/LocalModel.lean",
+      "bytes": 5326,
+      "sha256": "88919f6fd72656c544257e7862e8881f7f194c6ef1e3c57c38b1ac84c115e9fd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/LocalRegular.lean",
+      "bytes": 2333,
+      "sha256": "b518526b4f914bbca98e867db0ccf2e6e6e8ffc5dcb17922834fe0822efb9a2d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/MatrixParity.lean",
+      "bytes": 8092,
+      "sha256": "7487d3cbe50a6a3fd74e5c0a9d6ab60227be28d5954540e031fb91d1b4aa7162"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/NoFreeRidge.lean",
+      "bytes": 2731,
+      "sha256": "f7462ddb0b84e8d3e5a7b78ac40c35ef340d20c3e2564546e43b77ae95bfb205"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/RegularBase.lean",
+      "bytes": 4458,
+      "sha256": "6485efb28051f7188f730669b59b165844bbfd7460601d24e819a193d127d7fe"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/RegularModel.lean",
+      "bytes": 2947,
+      "sha256": "767f7bcb25931e72a7b01e07d8b4d36f793e60985e124d070c3a5c5fbce5e313"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/RegularPatch.lean",
+      "bytes": 6446,
+      "sha256": "8edd889b89e13c8d4a9b98c6e05b49f860307152f4e1c0c9764e86bf5d1472ba"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/Sard.lean",
+      "bytes": 2074,
+      "sha256": "b39a13afbd6780fc5e9925cc8707ee343f0ff3d9d00e083b183ac1300b40828f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/SphereBlock.lean",
+      "bytes": 5956,
+      "sha256": "08e15b28fe08f570dfeb55a433e697eb7af58ada90eb4c3f79bc5763a9c48114"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/SphereNullPatch.lean",
+      "bytes": 3108,
+      "sha256": "0bdefae33aa160ddda9d73c2321ffb7b0b5bc5c89d8d206b6e5fb2620490fa3f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/SphereParity.lean",
+      "bytes": 8835,
+      "sha256": "2cd07027b4e539aae17c8f7f5b6a0ff5824b70396441f9967e61d1bc63c72ba7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/LocalParity/TraceLocalModels.lean",
+      "bytes": 6270,
+      "sha256": "8483cf047b2bcf0284727b262f0c56c865c5e22d7d2548cc626909313a333055"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Main.lean",
+      "bytes": 5357,
+      "sha256": "ea004f8f339bb8d4f55ba3d05b7959e2169d2c8e712db7419002df6466b8eeae"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/BlockLine.lean",
+      "bytes": 4984,
+      "sha256": "181fd09b2a2d9906fb100bddc0851c0b2378d2aed5fe769a9809d8f07cb57e55"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/BlockParts.lean",
+      "bytes": 5326,
+      "sha256": "d466c65869661a0b961297286c7ae323778b67b25ed564972adc02e4ac0639cc"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/BlockVector.lean",
+      "bytes": 4647,
+      "sha256": "0c814fd75170a205a09bcf7f1eae95f6f29b301cb0196092b6faefa6efba6a34"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/CenterApproximation.lean",
+      "bytes": 6135,
+      "sha256": "0be503a8d9ba66ffde914940a511dea4558d1f81433a68b844bd0e0b717b2a69"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/FibreContinuity.lean",
+      "bytes": 4426,
+      "sha256": "1550e2cafe051af5805f8839a296b796b35cfcab5113fb6116640221a2baabc4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/FibreHomotopy.lean",
+      "bytes": 7002,
+      "sha256": "8f8416a5bb4b4ccc6470643d26c6620cda3d3f8c1c7f90bd565f3d9261e09626"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/FibreTransport.lean",
+      "bytes": 4386,
+      "sha256": "186d0887c6a8f13a14aed85592d4b5b7d08252c3bfdc77d29bde1da4a346cdf6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/FinitePositiveBound.lean",
+      "bytes": 5154,
+      "sha256": "e77561eb5cd44e74930fdcccdc77e464d8d3e8ac63bcb31eaac8c4c73c51e35c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/LineRepresentative.lean",
+      "bytes": 4526,
+      "sha256": "38948dd95a4df997e16a88d32384a5d7fc8b45df2a882a3ab4370aef49e4a3cd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/MatrixCompression.lean",
+      "bytes": 2821,
+      "sha256": "78ecd2678347f4d6635a92576c4607c60153385fe4b803c1b44d5e60b24eaa5c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/MatrixFibre.lean",
+      "bytes": 3624,
+      "sha256": "cb57bda0f650a43b2a0e04728075f699b80ea311e4741d74d9f5113864141b16"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/MatrixKernel.lean",
+      "bytes": 4361,
+      "sha256": "cd69bd1887be2b24c5c9621a34a4f1cb15a009a9177806a299f9064a66f0f38b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/MatrixNorm.lean",
+      "bytes": 2660,
+      "sha256": "815e98f66530cc5f712c52edfc12a6b42fc34345c4b55f2d239aaec4d8185284"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/MatrixReflection.lean",
+      "bytes": 3021,
+      "sha256": "c8dfd7fd9610ad19d9905d8de225561cdaf245deb8431620b4f9ef465f5e5b85"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/MatrixTransport.lean",
+      "bytes": 3171,
+      "sha256": "6e407ea5218c2eafc5ad2eba643128fd8ad2611e0ade5d5dc15503c2dcad80ac"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/ModelRay.lean",
+      "bytes": 3195,
+      "sha256": "a14450f799a41022e3cc339707d75686c0519ed3c5694765d74301e0ce333814"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/PositiveSlice.lean",
+      "bytes": 2238,
+      "sha256": "d0e9ff3fd4c271d3c86ba18c0d4f3d0918b974b7df7646858f710b4a19b1ec8d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/Rank.lean",
+      "bytes": 3656,
+      "sha256": "aca4595be4e823aed09f0fa6549bf0db48db51cb48a47d701a3cb99828340ae1"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/RankPreimage.lean",
+      "bytes": 4318,
+      "sha256": "8fe3284eb526808ea242cd5489ec06b4454651dbc5832f84a90adf977e565b40"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/ReflectionTransport.lean",
+      "bytes": 3072,
+      "sha256": "9f84eada958987ef049bd12792e3e5532959b5a52201469c639ac74b0c523432"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/SignedExtension.lean",
+      "bytes": 5207,
+      "sha256": "340127bf097e91e77f9fa32e742c8bd8fd6171fec633bae5edfb896ad5f955e9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/SpectralChart.lean",
+      "bytes": 5821,
+      "sha256": "cc5b4bc5b361fb54adc68e7654abc99f6af90068ea4845945fa337f5092b6a02"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/SymmetricCoordinates.lean",
+      "bytes": 2473,
+      "sha256": "b4a0fcfd73a00f187d109bf5c879fe439c4e1302d1ad83b578b755ef9cd12a88"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/SymmetricEntries.lean",
+      "bytes": 2267,
+      "sha256": "f17fb0e36cf9446f9213b3b77ebe93c3579b58bd228904a3bbc058cc75742a2c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/TraceHomotopy.lean",
+      "bytes": 4488,
+      "sha256": "d7a71767ab4f4d00be99bdcdeabe120904f74affff0fd2fc61d8b7577fe5262a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/MatrixGeometry/TracePatchModels.lean",
+      "bytes": 3136,
+      "sha256": "0511f7178b6f4bd0969009d66ce23136aec1c109889002f4fb15f1f1605d271d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Model.lean",
+      "bytes": 643,
+      "sha256": "3203ab1c5b886a112c51452aa841391c0ea9e9ab2bf1d403d94869b9003da115"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/Basic.lean",
+      "bytes": 11829,
+      "sha256": "3373eafbdd86750fc2cc75a4c24a160208c591e5a82e8d7ebfd2e9397e5db45a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/ChartSurgery.lean",
+      "bytes": 6885,
+      "sha256": "5997fe2f974d448121cc506203a03c0aa87585d57af057484b0890d80a369eec"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/CompactLocalHomotopy.lean",
+      "bytes": 3436,
+      "sha256": "4bd19a5f43a4451477a522b0e780096e8052095511f827e85e0eaad7fa097f2f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/CompactTargetHits.lean",
+      "bytes": 7798,
+      "sha256": "b1017d58ee1d99c3b4cfee5b6eb19ee16c9928a52525b3a3c112f1ed5d5d86b3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/CoordinateSum.lean",
+      "bytes": 4126,
+      "sha256": "75e90373706196e5d5f608af4396583cff5709e6d1be00720bd817aff9bf6944"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/FiniteClosedCutoffs.lean",
+      "bytes": 3391,
+      "sha256": "4fa723cede7ae1ea03d1df503516b933f71d7e4f26d22c62df5070b7e33fd476"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/FiniteOpenGlue.lean",
+      "bytes": 2724,
+      "sha256": "274ba7b2b7c75cfddfb1ab34563ff45e46cc78d17b5cb7bfb10eede169d6ae7b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/FinitePatch.lean",
+      "bytes": 3198,
+      "sha256": "7e235f95582eabf2b598b8d1e4de52795e08c108eb614948d5b9094f934540b9"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/FiniteSmoothSliceMisses.lean",
+      "bytes": 2341,
+      "sha256": "03d6a20c93412b336942f19feebe15048e74f8e289b037be13b8549e8b6659c3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/FiniteSmoothSliceMissesBounded.lean",
+      "bytes": 3808,
+      "sha256": "f0eaf40efcf7e2677bc151f6cfcfafd675f8df348d4ada141e25c5e26ac6a32a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/NegativeQuadratic.lean",
+      "bytes": 7914,
+      "sha256": "64233f2a9dd892db0e86e0858e20229d9b897d75c071bd34971a2b822e8feb2f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/NullImage.lean",
+      "bytes": 3609,
+      "sha256": "836b4d045a82edee54c0a181d75fcce722906d371623120d36753b4eca2b44ef"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/RaySet.lean",
+      "bytes": 3952,
+      "sha256": "899d2559978aa3d836f62baba9cf6942e50c20fe34596569fe54e23c20d8aa7e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/Restrict.lean",
+      "bytes": 3885,
+      "sha256": "841aa9408422089898fd3195b8c2fa624cc03a1f95f017018efd31fd6bb1273e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/SimplexPoint.lean",
+      "bytes": 1930,
+      "sha256": "41d5e0bd4dd8b0d7a15ec51240ee1eb44fa4613950d63c86422795e7addc2a31"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/Tangent.lean",
+      "bytes": 6816,
+      "sha256": "b2435144e3d766690da67af78526956d33033c8ecb204fb13a6b351a6456ef93"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/TenPure.lean",
+      "bytes": 5449,
+      "sha256": "e7a81e20732cb024e54e2fe8c97afa58f4066f91f52246b1d5f9b446ed2ac5e7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Projectors/Within.lean",
+      "bytes": 5493,
+      "sha256": "6e71be8516ba4d7c7426cbf34a857d81d191be7166ce51d8f3e5ff719b23468c"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Approximation.lean",
+      "bytes": 8000,
+      "sha256": "0ebcaf1cade6e54ef3eaa744610d661a4ffe16a3dbb1ca533de053cfd0f75234"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/BarycenterNeg.lean",
+      "bytes": 3560,
+      "sha256": "75c9c0645cf908db8f1f074cad111373b453e715622c7528fc069cfb49decff0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/BoolCubeConstant.lean",
+      "bytes": 4268,
+      "sha256": "f2d6da40c2c9b02f15388822ab12d328ed750dab448d41fa4bf21212dbf9500e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/CharacteristicDegree.lean",
+      "bytes": 6405,
+      "sha256": "6777dd658eb35705eea79c03b0fa69171351e56ecb17d33915eb669f47e6f708"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Coefficients.lean",
+      "bytes": 4176,
+      "sha256": "3462bd08dc378c66d478701baa308271322b0fe6730f7e6b05d71ca2014bbef5"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/CompactAdditiveLocality.lean",
+      "bytes": 7717,
+      "sha256": "47a96ced3b7c1f374c177e1bd1f44e0722d41907b7d87a312711492a1e7b43e0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/ContigSimplexBoundary.lean",
+      "bytes": 6452,
+      "sha256": "ed30b958f97f432bfd9834264335a304034beb508c16e732c440318cff9a1922"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/CrossChainDimensionBound.lean",
+      "bytes": 6501,
+      "sha256": "a4a42a6d5fd867f359161137535263a48b50ee7b088c1d8b4d4155106dbf8773"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/CrossEmbedding.lean",
+      "bytes": 3477,
+      "sha256": "410d7d4aeac56b39250c7a0a4eecf956ce283c928b2c28f69738cec056304f7e"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/DoubleEraseSumFun.lean",
+      "bytes": 6462,
+      "sha256": "d3f5ff9a75565f83b377fc39232e96c3cbdf7688d83d0f5c73597576cdda62c1"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Equivariance.lean",
+      "bytes": 6474,
+      "sha256": "9db79ad1e40f6d81a321a22f93b3c073ff35603a3f594d1bbc7d0ace2e483b20"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/EventuallyFineSphereLabel.lean",
+      "bytes": 6485,
+      "sha256": "85cac4904a1816c8c36da2b64f57a42cfa548e103a63f2d2feeb4c553d4d495b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/F2.lean",
+      "bytes": 5524,
+      "sha256": "7a1059cd375025a4adcd44dc21ee5208a960e5794a9423cad8a0703710a804f1"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/FineCrossMap.lean",
+      "bytes": 7693,
+      "sha256": "2ff139e2e89efd945211e11e28566d7c6366bb32a2fc83ba1865f40ece9b7685"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/FineCrossMapMesh.lean",
+      "bytes": 4852,
+      "sha256": "8401bf4e1308f1786a0d52a0bbcec09c53ea15b068aa93b4dbbdf702b5f5d186"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Flip.lean",
+      "bytes": 5411,
+      "sha256": "9297c0f1041ce6800d67998dab936c034b18238f65b9afadf5758dfafa788702"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/GeneralTarget.lean",
+      "bytes": 4427,
+      "sha256": "3fe0b471eed9722c22acca2492c117975f0b071db4b1506391294c8040d246f2"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/LabelRegion.lean",
+      "bytes": 7012,
+      "sha256": "fb3e38e61d3ba78b9e259ea72b6ee00bc477cfa368d1f92e7793d1f93f62d690"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/LinearMapSupport.lean",
+      "bytes": 5641,
+      "sha256": "49a17023e0caf9079b5defdcff944b3d86dd2153be1564e53d9ee55a5a30ee36"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/MapChainsEquivSimplexAll.lean",
+      "bytes": 4979,
+      "sha256": "b291cc18aba109d1e299cbd63236908c704c86c5e39ef2446dd6e9867e4be168"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Maps.lean",
+      "bytes": 6597,
+      "sha256": "7b9b6ec9cb09749cab59ea8fed3c97ec26454a3dcabfed1e5357e8d19c993079"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/MaxIndex.lean",
+      "bytes": 3719,
+      "sha256": "1b80dd0f110972e435eff7a96a0c1b5b86ac8d42ae9c011533f3531282cfde19"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/MemSupportSimplex.lean",
+      "bytes": 2100,
+      "sha256": "8e97de452ff9bf37e83cb30967433a501909acdfddcbbf91b34e99c0ccebd9fb"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/NormMap.lean",
+      "bytes": 4557,
+      "sha256": "b5ad77752c30891c6ecc65febc9f648c94f2a38f74aff2c2bd01a2badaed288a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/NullHomotopyLocalModels.lean",
+      "bytes": 5309,
+      "sha256": "120b18206a5b2a7777dc7b2b0952826ad769e08b92c842a8f0fb581f095b8db2"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/OddHomotopySurjective.lean",
+      "bytes": 3971,
+      "sha256": "aa0a39e68a32f065ffcf24b4548dc67a34c8e23f15881093abd8571d919fbaf4"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/OddSphereDimensionBoundFintype.lean",
+      "bytes": 4893,
+      "sha256": "b0e9333b50a03b69b2632e3bdb169ec6657244b2488caee024c321ac35212b99"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Refinement.lean",
+      "bytes": 5360,
+      "sha256": "35926d34d93e81f84de2738e4edbb004bdb6921f3725b75f2d30fbb4afab72fd"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/SignVector.lean",
+      "bytes": 5924,
+      "sha256": "81926294f97afacc10cfe7d2e30eabafcf751be77740b4ee134bace0fed8ef37"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/SignedVertex.lean",
+      "bytes": 8992,
+      "sha256": "f6bdcfbf62bba594e1991ce3af0d5ddc6f012248b254474c8340da2f2e2cea54"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/SimplexMemDegreeAll.lean",
+      "bytes": 7295,
+      "sha256": "dca21a3753e96d5ca23881e56be2a108661e58e51d1a3a7cc7548ee004fb9fbe"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/SubdivSimplex.lean",
+      "bytes": 3394,
+      "sha256": "568df98fecf73af526ffcb188d1bc5703b785168be9ff45037ce2c523655b864"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/Supports.lean",
+      "bytes": 4302,
+      "sha256": "21c4cc8754efd9726f4e2004cf58517b44ea5e942c260a487f33284e42662785"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Simplicial/UnitRadial.lean",
+      "bytes": 5337,
+      "sha256": "69cdd6de32f6fa21291b1484a5eb0671f6f5ae0826ee29a53e878f882d1078e0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SmithTheory/CharacteristicCochains.lean",
+      "bytes": 3964,
+      "sha256": "63fc4171c2b47f8831a2d2e4b66c69dfafd7bdb3f11ed850eb6c0e4f385bdfe7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SmithTheory/Involution.lean",
+      "bytes": 2079,
+      "sha256": "f7fa9723ed6391b7a54c3fbb513407760ed23b844998df6b489657a6150822a3"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/HemisphereChart.lean",
+      "bytes": 4185,
+      "sha256": "0df4b120b3f4abb3cb225117d383cfc1d6b31727e4cee5b97a8d099e84ca9668"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/HomogeneousLift.lean",
+      "bytes": 4958,
+      "sha256": "cb3cc661ea6e0b1043766b9413eaf154216bdc0d854eb8190bfd2ec48ecf4271"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/IntegralLift.lean",
+      "bytes": 5883,
+      "sha256": "a3dec8aaf8c197f207ab25a36c70a40cf1c993ac7cdc146ebed99388878b52a7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/NormSphere.lean",
+      "bytes": 5289,
+      "sha256": "111fb57350d49fa33f1ff6e8a42ec72f6dd3c68f143da1aac8b221351384d5ab"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/OddSphereMap.lean",
+      "bytes": 4023,
+      "sha256": "3d7d0b1e48efa38e1d26fb3105e01e96b83cfa3544071d21a903119243017272"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/SphereExtension.lean",
+      "bytes": 2714,
+      "sha256": "b9409bbf71c9aaa74f890056622fe52de896f4c3a381d9f45c7a4ca66e1475ca"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/SphereMeasure.lean",
+      "bytes": 3109,
+      "sha256": "fa5a44b79f29c7e5730a3ab8d8e40cc5300bf557f52fe42694f3d13d3ea524e0"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/SphereMoments.lean",
+      "bytes": 4076,
+      "sha256": "3327408fefc8e847e4d1036a49b9b901a9d422282b890c1798f210e94faa298b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/SphereGeometry/TraceSphere.lean",
+      "bytes": 4153,
+      "sha256": "24358fe72f274ecbed279b725a83ae85e57f4de20142b44c67ca74bfc9eb4714"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/ActiveChambers.lean",
+      "bytes": 3552,
+      "sha256": "fa648c977af96dcb0768fcd728ce03232be07cd98af4ea23f56b40f4bd24ebba"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/AllPairs.lean",
+      "bytes": 7884,
+      "sha256": "a6a5810db41bc37a2b10e9fbf303a73577d00f7e7e5d7cab73a4918cbdb37c53"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/BalancedChart.lean",
+      "bytes": 3413,
+      "sha256": "03e00e7b2f2b5900a4f6aa857fb241f5440ca0c51de363764a742cc211f61fd6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/ChamberPath.lean",
+      "bytes": 3028,
+      "sha256": "0cb94e0c51be92a88cd3d8eb3ab774cd204473510f60796d6ebf8dd546164b0b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/Chambers.lean",
+      "bytes": 4682,
+      "sha256": "c8a882dd47fe4574091c2e661978a3c0a03d44848bf02914fb67ec4645ed5dd8"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/DisjointChambers.lean",
+      "bytes": 5797,
+      "sha256": "d3bb9c116c19febafbdf046b5ae541d406507a92d4ae14f261cf0140f29f3dbc"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/FacetTangent.lean",
+      "bytes": 1960,
+      "sha256": "dc00533dbdc36249bc34b44efe8910316e7ed48b9290779203676ccd9cc0bb75"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/FullSupport.lean",
+      "bytes": 4196,
+      "sha256": "df0d44ad6a023b11e5aa35b17456944511a8a7fbea27de5fc81bd48d1425bea7"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/LocalMix.lean",
+      "bytes": 8728,
+      "sha256": "db33c6aa748b7708b316bf861c24876d54d6853800a818c09e281ad8428a5f82"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/MixedHits.lean",
+      "bytes": 6303,
+      "sha256": "8cd50abb7b042a74cd465a7f6e1b3d5b86a3186fef932059b5b39c7f5993443b"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/MixedHomotopy.lean",
+      "bytes": 6872,
+      "sha256": "cd9bb15e9d45135ed47d1ab99df505c3802f8d6849f92c12c06888562ea3199a"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/NegativeFibre.lean",
+      "bytes": 3544,
+      "sha256": "dfcd6ff2a1eb9ee443050bd2e9824807ed847071c7653b1723c42d9be0c99ad2"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/Purity.lean",
+      "bytes": 5117,
+      "sha256": "ac2f13719ed0e9785525ebe3a874ff444bbac73e597f01fb16064e8fbbae6467"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/PurityChart.lean",
+      "bytes": 3368,
+      "sha256": "eff561a39ad2f571bae5b15625a8b27d0ae86a3d0ad92627cdbd5641e79f23ed"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/PurityGeometry.lean",
+      "bytes": 5542,
+      "sha256": "82e8b87438c75922116eb8e758aadcb42241051287896782699a907d2e31ee9d"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/SixFaces.lean",
+      "bytes": 5566,
+      "sha256": "33695451fa0091fa9e423fa4927327054c1fa141c829889ad6df3e0b0c9815f6"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/SpectralSupport.lean",
+      "bytes": 5416,
+      "sha256": "5b496d24ea4d08cd933c23e9b5f7eecc02015476d57ce548879d6ae95e26e0e2"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/Support/SupportIncidence.lean",
+      "bytes": 5422,
+      "sha256": "b4953f62ce5edc1861cf6943f0d43c5df5abf74f86d8e5046080fca08039a46f"
+    },
+    {
+      "path": "OAI/Geometry/Borsuk/TenLabels/Labels.lean",
+      "bytes": 5006,
+      "sha256": "2edf8f16845c943113b43f34542a4bcdd26872910067b35d184c76915882ebb0"
+    }
+  ],
+  "source_file_count": 349,
+  "source_bytes": 4716992,
+  "unique_upstream_file_count": 356,
+  "upstream_catalogue": "lean/formalization.yaml"
+}

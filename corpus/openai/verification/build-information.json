@@ -1,0 +1,12 @@
+{
+  "lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "rust": "rustc 1.94.0 (4a4ef493e 2026-03-02)",
+  "sources": {
+    "comparator": "d03acab154d269c06e60e4de7e4cc85deebff94b",
+    "lean4export": "076e8e57707e813375e8f9da8bf989799ace9680",
+    "nanoda": "0f88b5f382f0f3f08aed4af0dd6c0e48c3fd7a44"
+  },
+  "binding_source_sha256": "fd7f73d10a783d6a8b193ae73b80232aabdb83b39c355e5809bef158269f4ef5",
+  "binding_sha256": "23976f9b61618f6717d58ddfa2efbbca2785956a6584fcdb8fda50eb820982bc",
+  "nanoda_sha256": "d00991bf29c331ce06f85b798b9dfceafee10599702e8a392633462c1487e2fd"
+}

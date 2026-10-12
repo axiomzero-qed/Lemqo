@@ -6,6 +6,7 @@ environment, build output, or arbitrary workspace files are included.
 
 import argparse
 import hashlib
+import os
 import sys
 import zipfile
 from pathlib import Path
@@ -16,19 +17,31 @@ from lemqo import __version__  # noqa: E402
 
 ROOT_FILES = (
     "README.md", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md",
-    "SECURITY.md", "CHANGELOG.md", "pyproject.toml", "MANIFEST.in",
+    "SECURITY.md", "CHANGELOG.md", "THIRD_PARTY.md", "pyproject.toml", "MANIFEST.in",
     ".gitignore", ".gitattributes",
 )
-SOURCE_DIRS = ("lemqo", "docs", "examples", "tests", "tools", ".github")
-EXTENSIONS = {".py", ".md", ".json", ".yml", ".toml"}
+SOURCE_DIRS = ("lemqo", "docs", "examples", "tests", "tools", ".github", "bridge", "corpus")
+EXTENSIONS = {".py", ".md", ".json", ".yml", ".yaml", ".toml", ".ndjson", ".lean"}
+EXTENSIONLESS_FILES = {"LICENSE", "lean-toolchain", ".gitignore"}
+EXCLUDED_DIRS = {
+    ".git", ".lake", "__pycache__", ".cache", "cache", "caches",
+    ".mypy_cache", ".pytest_cache", ".ruff_cache", ".tox", ".venv",
+    "venv", "node_modules", "build", "dist",
+}
 
 
 def source_files():
     files = [ROOT / name for name in ROOT_FILES]
     for directory in SOURCE_DIRS:
-        for path in (ROOT / directory).rglob("*"):
-            if "__pycache__" not in path.parts and path.suffix in EXTENSIONS and path.is_file():
-                files.append(path)
+        for current, dirs, names in os.walk(ROOT / directory):
+            dirs[:] = [name for name in dirs
+                       if name.casefold() not in EXCLUDED_DIRS
+                       and not name.casefold().endswith(".egg-info")]
+            for name in names:
+                path = Path(current) / name
+                if name in EXTENSIONLESS_FILES or path.suffix.lower() in EXTENSIONS:
+                    if path.is_file():
+                        files.append(path)
     for path in files:
         if path.is_symlink() or not path.is_file():
             raise RuntimeError(f"required source is missing or a symlink: {path.name}")
@@ -53,7 +66,8 @@ def build(output):
     source = output / f"{prefix}-source.zip"
     runnable = output / f"{prefix}.pyz"
     archive(source, [(f"{prefix}/{name}", data) for name, data in contents])
-    modules = [(name, data) for name, data in contents if name.startswith("lemqo/") or name == "LICENSE"]
+    modules = [(name, data) for name, data in contents
+               if (name.startswith("lemqo/") and name.endswith(".py")) or name == "LICENSE"]
     modules.append(("__main__.py", b"from lemqo.__main__ import main\nraise SystemExit(main())\n"))
     archive(runnable, modules)
     hashes = "".join(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n"

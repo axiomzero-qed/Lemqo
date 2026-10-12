@@ -7,6 +7,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
+from lemqo import __version__
 from lemqo.__main__ import main
 from tests.support import ROOT
 
@@ -52,7 +53,7 @@ class CLITests(unittest.TestCase):
     def test_version_and_help(self):
         result = self.run_cli("--version")
         self.assertEqual(result.returncode, 0)
-        self.assertIn("0.1.0", result.stdout)
+        self.assertIn(__version__, result.stdout)
         self.assertEqual(self.run_cli("--help").returncode, 0)
 
     def test_receipt_unchanged_by_hash_seed(self):

@@ -1,0 +1,19 @@
+{
+  "format": "lemqo-lean-claim-v1",
+  "name": "openai/seymour_second_neighborhood",
+  "theorem_names": [
+    "OAI.SeymourSecondNeighborhood.exists_goodVertex"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "reference": {
+    "sha256": "00a2d909a927dbab3f3e3f7e3ace4ef55c42487cd2fdaae6c7603b43c506bb58",
+    "bytes": 6425597
+  },
+  "lean_version": "4.34.1",
+  "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "export_format": "3.1.0"
+}

@@ -1,0 +1,19 @@
+{
+  "format": "lemqo-lean-claim-v1",
+  "name": "openai/cycle_decomposition",
+  "theorem_names": [
+    "OAI.ErdosGallai.erdos_gallai"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "reference": {
+    "sha256": "c539e184ae66820d247890f89c9a64674254f2607f7cc2bd0b0192681005d820",
+    "bytes": 21712669
+  },
+  "lean_version": "4.34.1",
+  "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "export_format": "3.1.0"
+}
