@@ -20,9 +20,9 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://lemqo.com"
-Repository = "https://github.com/zhtjoe/Lemqo"
-Issues = "https://github.com/zhtjoe/Lemqo/issues"
-Documentation = "https://github.com/zhtjoe/Lemqo/tree/main/docs"
+Repository = "https://github.com/axiomzero-qed/Lemqo"
+Issues = "https://github.com/axiomzero-qed/Lemqo/issues"
+Documentation = "https://github.com/axiomzero-qed/Lemqo/tree/main/docs"
 
 [project.scripts]
 lemqo = "lemqo.__main__:main"

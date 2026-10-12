@@ -21,7 +21,7 @@ requirement; after obtaining the source, no package installation or network is
 needed. On Windows, use `py -3` if `python` is not available.
 
 ```sh
-git clone https://github.com/zhtjoe/Lemqo.git
+git clone https://github.com/axiomzero-qed/Lemqo.git
 cd Lemqo
 python -m lemqo check examples/identity.proof.json --claim examples/identity.claim.json
 ```
@@ -82,7 +82,7 @@ and SHA-256 checksums using only the standard library.
 Project domain: [lemqo.com](https://lemqo.com). The repository's English Markdown
 documentation is the source for a future documentation site; v0.1 does not
 deploy or depend on a website. Public repository:
-[zhtjoe/Lemqo](https://github.com/zhtjoe/Lemqo).
+[axiomzero-qed/Lemqo](https://github.com/axiomzero-qed/Lemqo).
 
 Lemqo is licensed under the [MIT License](LICENSE). The implementation is
 original; the research documents acknowledge the systems that informed it.

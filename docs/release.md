@@ -66,7 +66,7 @@ No package has been uploaded to PyPI and no package-name reservation is claimed.
 
 ## GitHub publication
 
-The public repository is [zhtjoe/Lemqo](https://github.com/zhtjoe/Lemqo).
+The public repository is [axiomzero-qed/Lemqo](https://github.com/axiomzero-qed/Lemqo).
 Before publishing a release tag, review repository metadata and security-reporting
 contact options and record the reviewed release commit. The homepage is
 `https://lemqo.com`; no live deployment or current domain-content claim is part

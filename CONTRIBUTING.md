@@ -24,4 +24,4 @@ The v0.1 calculus is fixed. Any proposed rule-set change must update the formal 
 
 ## Reporting issues
 
-Use [GitHub Issues](https://github.com/zhtjoe/Lemqo/issues) for bugs and design questions, or Discussions if enabled. For vulnerability reports, follow [SECURITY.md](SECURITY.md).
+Use [GitHub Issues](https://github.com/axiomzero-qed/Lemqo/issues) for bugs and design questions, or Discussions if enabled. For vulnerability reports, follow [SECURITY.md](SECURITY.md).

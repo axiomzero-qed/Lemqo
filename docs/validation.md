@@ -30,6 +30,6 @@ Reproduce the checks with `python tools/check_release.py`. The finite-model
 corpus is bounded testing evidence and does not establish correctness for all
 inputs. The mathematical soundness argument is in [trust.md](trust.md).
 Remote validation is recorded separately in the public repository's
-[GitHub Actions](https://github.com/zhtjoe/Lemqo/actions), with each run tied to
+[GitHub Actions](https://github.com/axiomzero-qed/Lemqo/actions), with each run tied to
 its commit. This table records local checks; it is not a claim that all future
 remote runs pass. No PyPI publication has been performed.
