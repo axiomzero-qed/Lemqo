@@ -25,7 +25,8 @@ def build(work):
     files = [p.relative_to(source).as_posix() for p in source.rglob("*")
              if p.is_file() and ".lake" not in p.parts and "__pycache__" not in p.parts]
     copy_project(source, bridge, files)
-    run(["lake", "build", "lemqo_compare"], bridge)
+    # The exporter is a producer/test tool, and must exist on a fresh install.
+    run(["lake", "build", "lemqo_compare", "lean4export"], bridge)
     assert_lake_pins(bridge, {"Comparator": BACKEND_SOURCES["comparator"], "lean4export": BACKEND_SOURCES["lean4export"]})
     nanoda = work / "nanoda"
     git_pin("https://github.com/ammkrn/nanoda_lib.git", BACKEND_SOURCES["nanoda"], nanoda)
