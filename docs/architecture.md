@@ -22,6 +22,24 @@ boundary: parsing both inputs precedes kernel checking, which precedes receipt
 creation. Each invocation builds fresh local state; no theorem cache, import
 environment, or previously accepted database can affect the result.
 
+## Optional Lean path
+
+The optional `check-lean` command is separate from the IPL checker:
+
+```text
+caller-selected reference + certificate
+        | hash binding and strict NDJSON preflight
+        | offline Comparator checks of declarations, statements,
+        | primitives, and axiom types
+        | independent Rust Nanoda checks of every declaration
+        + both stages pass -> VALID
+```
+
+The reference is selected independently by the caller. The current workflow
+uses only vendored sources from the pinned OpenAI repository; it is not a
+general Lean importer. Its trusted path includes preflight, Comparator, bridge,
+Rust checker, and their build/runtime components. See [docs/lean.md](lean.md).
+
 The certificate uses two topologically ordered DAGs. Formula rows permit
 sharing without ambiguous parsing or exponential subtree expansion. Proof
 rows permit reuse without mutating earlier judgments. Conclusion formula IDs

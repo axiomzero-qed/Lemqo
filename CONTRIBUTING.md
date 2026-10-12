@@ -4,13 +4,28 @@ Thanks for helping improve Lemqo. Keep changes focused and explain the behavior 
 
 ## Development
 
-Lemqo uses Python 3.11 or newer and the Python standard library for runtime and tests. Run the test suite and release checks from the repository root:
+The IPL checker uses Python 3.11 or newer and only the standard library at
+runtime. Its v0.1 rules, format, and test semantics remain unchanged. The
+optional Lean path has separate native prerequisites and currently has only
+Linux validation; see [docs/lean.md](docs/lean.md) before changing it. Run the
+Python suite and release checks from the repository root:
 
 ```text
 python -m unittest discover -s tests -v
 python tools/check_release.py
 python tools/build_release.py --out dist
 ```
+
+The optional OpenAI corpus workflow uses repository-vendored sources:
+
+```text
+python tools/build_lean_backends.py --work /tmp/lemqo-backends
+python tools/openai_certificates.py --work /tmp/lemqo-openai --out /tmp/lemqo-certificates --backends /tmp/lemqo-backends/backends.json
+```
+
+It does not accept arbitrary Lean source. Keep main-theorem status distinct
+from supporting lemmas, and report a result as checked only after both the
+Comparator and independent Nanoda stages pass.
 
 To run from source, use:
 

@@ -1,0 +1,13 @@
+{
+  "upstream_repository": "https://github.com/openai/math",
+  "upstream_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "theorem": "OAI.SeymourSecondNeighborhood.exists_goodVertex",
+  "challenge_module": "ComparatorChallenges.SeymourSecondNeighborhood",
+  "solution_module": "OAI.Combinatorics.SecondNeighborhood.Main",
+  "catalog_sha256": "a5a4aa02fd173d0ebf433207f0bf6204c0f63319f7503be3336f37ea899ef226",
+  "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "lake_manifest_sha256": "3fa6d8fe6895f668816f34df9a083de53d590fca5283da5583719a78d9fb5ee6",
+  "solution_sha256": "276100c5ccbd1a4ec446d7c16b54e7bfdfc161b4fc8e55e33715c6677d889e62",
+  "reference_sha256": "00a2d909a927dbab3f3e3f7e3ace4ef55c42487cd2fdaae6c7603b43c506bb58",
+  "mathlib_cache_requested": false
+}

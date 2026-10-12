@@ -1,4 +1,4 @@
-# Releasing Lemqo v0.1
+# Releasing Lemqo v0.2
 
 ## Local verification
 
@@ -7,21 +7,21 @@ Run from the repository root with Python 3.11+:
 ```sh
 python tools/check_release.py
 python tools/build_release.py --out dist
-python dist/lemqo-0.1.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
+python dist/lemqo-0.2.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
 ```
 
 The release check runs the complete test suite and checks documented example
 outcomes, local documentation links, version consistency, required files, and
-standard-library runtime imports. CI is configured to repeat this on Linux,
-Windows and macOS with Python 3.11–3.14. Configured CI is not evidence of a run:
-require green checks in the actual public repository before publishing a tag.
+standard-library runtime imports. The IPL command remains cross-platform. The
+optional Lean path has only been validated on Linux; this does not assert that
+v0.2 CI or a release tag has been verified.
 
 The build writes three files:
 
-- `lemqo-0.1.0.pyz`: source ZIP application, launched with `python`; Python is
+- `lemqo-0.2.0.pyz`: source ZIP application, launched with `python`; Python is
   still required. It includes the checker and its MIT license.
-- `lemqo-0.1.0-source.zip`: allowlisted source, docs, tests, examples, and CI
-  configuration under the `lemqo-0.1.0/` directory.
+- `lemqo-0.2.0-source.zip`: allowlisted source, docs, tests, examples, and CI
+  configuration under the `lemqo-0.2.0/` directory.
 - `SHA256SUMS`: exact-byte SHA-256 values for those two archives.
 
 Extracting the source archive and running its quickstart requires no network.
@@ -72,8 +72,8 @@ contact options and record the reviewed release commit. The homepage is
 `https://lemqo.com`; no live deployment or current domain-content claim is part
 of this release.
 
-Push the reviewed source, wait for CI, then create the `v0.1.0` tag and an
-initial release described by [CHANGELOG.md](../CHANGELOG.md). The manual
+Push the reviewed source, wait for CI, then create a reviewed release tag and
+release described by [CHANGELOG.md](../CHANGELOG.md). The manual
 `Build release artifacts` workflow tests and uploads the archives as a workflow
 artifact; it never publishes a GitHub release automatically. Attach the three
 reviewed files to the release and preserve the commit, CI evidence, Python

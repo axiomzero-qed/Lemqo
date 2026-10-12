@@ -1,0 +1,19 @@
+{
+  "format": "lemqo-lean-claim-v1",
+  "name": "openai/borsuk_nine",
+  "theorem_names": [
+    "OAI.BorsukNine.main_theorem"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "reference": {
+    "sha256": "6c85465ffdf1ad2846bcdc764395fc5ebcd719d634262470c174df2449801511",
+    "bytes": 77807309
+  },
+  "lean_version": "4.34.1",
+  "lean_githash": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "export_format": "3.1.0"
+}

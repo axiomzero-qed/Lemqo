@@ -1,0 +1,31 @@
+{
+  "backend_config_sha256": "7c3d4aeff484e16ec7e068192bbe088f22357e138a94067c17490252be0e28dc",
+  "backend_sources": {
+    "comparator": "d03acab154d269c06e60e4de7e4cc85deebff94b",
+    "lean4export": "076e8e57707e813375e8f9da8bf989799ace9680",
+    "nanoda": "0f88b5f382f0f3f08aed4af0dd6c0e48c3fd7a44"
+  },
+  "binding_sha256": "23976f9b61618f6717d58ddfa2efbbca2785956a6584fcdb8fda50eb820982bc",
+  "checked_declarations": 22252,
+  "claim": "openai/seymour_second_neighborhood",
+  "claim_sha256": "9713f83c5b41de718a9ee3c8419ce96084fad0f4d9843cf781ea01238a99250f",
+  "independent_kernel": "nanoda",
+  "logic": "lean4",
+  "nanoda_sha256": "d00991bf29c331ce06f85b798b9dfceafee10599702e8a392633462c1487e2fd",
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "proof_bytes": 120954904,
+  "proof_records": 2269329,
+  "proof_sha256": "276100c5ccbd1a4ec446d7c16b54e7bfdfc161b4fc8e55e33715c6677d889e62",
+  "reference_sha256": "00a2d909a927dbab3f3e3f7e3ace4ef55c42487cd2fdaae6c7603b43c506bb58",
+  "statement_binding": "matched",
+  "status": "valid",
+  "theorem_names": [
+    "OAI.SeymourSecondNeighborhood.exists_goodVertex"
+  ],
+  "verifier": "lemqo",
+  "version": "0.2.0"
+}
