@@ -1,0 +1,7 @@
+{
+  "format": "lemqo-claim-v1",
+  "logic": "ipl",
+  "name": "conjunction_commutes",
+  "premises": [],
+  "goal": ["imp", ["and", "P", "Q"], ["and", "Q", "P"]]
+}

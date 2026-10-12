@@ -1,0 +1,7 @@
+{
+  "format": "lemqo-claim-v1",
+  "logic": "ipl",
+  "name": "ex_falso",
+  "premises": [],
+  "goal": ["imp", ["false"], "P"]
+}

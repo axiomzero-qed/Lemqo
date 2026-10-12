@@ -1,0 +1,15 @@
+{
+  "format": "lemqo-proof-v1",
+  "logic": "ipl",
+  "formulas": [
+    ["atom", "P"], ["atom", "Q"], ["atom", "R"], ["or", 1, 2],
+    ["and", 0, 3], ["and", 0, 1], ["and", 0, 2], ["or", 5, 6], ["imp", 4, 7]
+  ],
+  "steps": [
+    ["assume", 4], ["and_left", 0, 0], ["and_right", 3, 0],
+    ["assume", 1], ["and_intro", 5, 1, 3], ["or_left", 7, 4],
+    ["assume", 2], ["and_intro", 6, 1, 6], ["or_right", 7, 7],
+    ["or_elim", 7, 2, 5, 8], ["imp_intro", 8, 9]
+  ],
+  "root": 10
+}

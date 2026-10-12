@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lemqo"
+version = "0.1.0"
+description = "An auditable checker for explicit intuitionistic propositional proof certificates"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Lemqo contributors"}]
+dependencies = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Homepage = "https://lemqo.com"
+Repository = "https://github.com/zhtjoe/Lemqo"
+Issues = "https://github.com/zhtjoe/Lemqo/issues"
+Documentation = "https://github.com/zhtjoe/Lemqo/tree/main/docs"
+
+[project.scripts]
+lemqo = "lemqo.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["lemqo*"]

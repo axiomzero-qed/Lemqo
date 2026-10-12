@@ -1,0 +1,7 @@
+{
+  "format": "lemqo-proof-v1",
+  "logic": "ipl",
+  "formulas": [["atom", "P"], ["atom", "Q"], ["and", 0, 1], ["and", 1, 0], ["imp", 2, 3]],
+  "steps": [["assume", 2], ["and_left", 0, 0], ["and_right", 1, 0], ["and_intro", 3, 2, 1], ["imp_intro", 4, 3]],
+  "root": 4
+}

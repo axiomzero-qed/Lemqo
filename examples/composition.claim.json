@@ -1,0 +1,7 @@
+{
+  "format": "lemqo-claim-v1",
+  "logic": "ipl",
+  "name": "composition",
+  "premises": [],
+  "goal": ["imp", ["imp", "P", "Q"], ["imp", ["imp", "Q", "R"], ["imp", "P", "R"]]]
+}

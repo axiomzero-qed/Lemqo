@@ -1,0 +1,7 @@
+{
+  "format": "lemqo-claim-v1",
+  "logic": "ipl",
+  "name": "distributivity",
+  "premises": [],
+  "goal": ["imp", ["and", "P", ["or", "Q", "R"]], ["or", ["and", "P", "Q"], ["and", "P", "R"]]]
+}

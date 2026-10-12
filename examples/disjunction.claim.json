@@ -1,0 +1,7 @@
+{
+  "format": "lemqo-claim-v1",
+  "logic": "ipl",
+  "name": "disjunction_commutes",
+  "premises": [],
+  "goal": ["imp", ["or", "P", "Q"], ["or", "Q", "P"]]
+}
