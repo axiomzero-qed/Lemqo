@@ -20,11 +20,15 @@ def check_documents():
                 ".github/workflows/ci.yml", ".github/workflows/release-artifacts.yml",
                 "docs/lean.md", "docs/openai.md", "corpus/openai/catalog.json",
                 "corpus/openai/LICENSE", "bridge/lean/Main.lean", "bridge/lean/lake-manifest.json",
-                "bridge/openai/lake-manifest.json")
+                "bridge/openai/lake-manifest.json", "docs/README.md",
+                "corpus/openai/README.md", "bridge/lean/README.md")
     for name in required:
         if not (ROOT / name).is_file():
             raise RuntimeError(f"missing release file: {name}")
-    for path in [*ROOT.glob("*.md"), *ROOT.glob("docs/*.md"), *ROOT.glob("examples/*.md")]:
+    documents = [*ROOT.glob("*.md"), *ROOT.glob("docs/*.md"), *ROOT.glob("examples/*.md"),
+                 ROOT / "bridge/lean/README.md", ROOT / "corpus/openai/README.md",
+                 ROOT / ".github/pull_request_template.md"]
+    for path in documents:
         text = path.read_text(encoding="utf-8")
         for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", text):
             target = target.strip("<>").split("#", 1)[0]
