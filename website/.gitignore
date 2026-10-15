@@ -1,0 +1,4 @@
+dist/
+*.zip
+.wrangler/
+deployment/

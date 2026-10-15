@@ -1,6 +1,6 @@
 <a id="releasing-lemqo-v02"></a>
 
-# Releasing Lemqo v0.2 / 发布 Lemqo v0.2
+# Releasing Lemqo v0.3 / 发布 Lemqo v0.3
 
 <a id="local-verification"></a>
 
@@ -13,27 +13,27 @@ Run from the repository root with Python 3.11+:
 ```sh
 python tools/check_release.py
 python tools/build_release.py --out dist
-python dist/lemqo-0.2.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
+python dist/lemqo-0.3.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
 ```
 
 The release check runs the complete test suite and checks documented example
 outcomes, local documentation links, version consistency, required files, and
 standard-library runtime imports. The IPL command remains cross-platform. The
 optional Lean path has only been validated on Linux; this does not assert that
-v0.2 CI or a release tag has been verified.
+v0.3 CI or a release tag has been verified.
 
-发布检查会运行完整测试套件，并检查文档示例结果、本地文档链接、版本一致性、必需文件及标准库运行时导入。IPL 命令仍可跨平台使用。可选 Lean 路径目前仅在 Linux 上验证；这并不表示 v0.2 的 CI 或发布标签已得到验证。
+发布检查会运行完整测试套件，并检查文档示例结果、本地文档链接、版本一致性、必需文件及标准库运行时导入。IPL 命令仍可跨平台使用。可选 Lean 路径目前仅在 Linux 上验证；这并不表示 v0.3 的 CI 或发布标签已得到验证。
 
 The build writes three files:
 
 构建会生成以下三个文件：
 
-- `lemqo-0.2.0.pyz`: source ZIP application, launched with `python`; Python is
+- `lemqo-0.3.0.pyz`: source ZIP application, launched with `python`; Python is
   still required. It includes the checker and its MIT license.
-  `lemqo-0.2.0.pyz`：源代码 ZIP 应用，通过 `python` 启动；仍然需要 Python。它包含检查器及其 MIT 许可证。
-- `lemqo-0.2.0-source.zip`: allowlisted source, docs, tests, examples, and CI
-  configuration under the `lemqo-0.2.0/` directory.
-  `lemqo-0.2.0-source.zip`：位于 `lemqo-0.2.0/` 目录下的白名单源码、文档、测试、示例和 CI 配置。
+  `lemqo-0.3.0.pyz`：源代码 ZIP 应用，通过 `python` 启动；仍然需要 Python。它包含检查器及其 MIT 许可证。
+- `lemqo-0.3.0-source.zip`: allowlisted source, docs, tests, examples, and CI
+  configuration under the `lemqo-0.3.0/` directory.
+  `lemqo-0.3.0-source.zip`：位于 `lemqo-0.3.0/` 目录下的白名单源码、文档、测试、示例和 CI 配置。
 - `SHA256SUMS`: exact-byte SHA-256 values for those two archives.
   `SHA256SUMS`：上述两个归档文件逐字节计算的 SHA-256 值。
 
@@ -99,11 +99,10 @@ No package has been uploaded to PyPI and no package-name reservation is claimed.
 
 The public repository is [axiomzero-qed/Lemqo](https://github.com/axiomzero-qed/Lemqo).
 Before publishing a release tag, review repository metadata and security-reporting
-contact options and record the reviewed release commit. The homepage is
-`https://lemqo.com`; no live deployment or current domain-content claim is part
-of this release.
+contact options and record the reviewed release commit. The homepage is `https://lemqo.com`. Its bilingual source is versioned in
+`website/`; the website deployment is recorded separately from the Python release.
 
-公开仓库为 [axiomzero-qed/Lemqo](https://github.com/axiomzero-qed/Lemqo)。发布标签前，应审查仓库元数据和安全问题报告联系方式，并记录经过审查的发布提交。主页是 `https://lemqo.com`；本次发布不声称网站已经上线，也不声称域名当前呈现特定内容。
+公开仓库为 [axiomzero-qed/Lemqo](https://github.com/axiomzero-qed/Lemqo)。发布标签前，应审查仓库元数据和安全问题报告联系方式，并记录经过审查的发布提交。主页是 `https://lemqo.com`，双语源码位于 `website/`；网站部署与 Python 发布分别记录。
 
 Push the reviewed source, wait for CI, then create a reviewed release tag and
 release described by [CHANGELOG.md](../CHANGELOG.md). The manual
@@ -116,9 +115,8 @@ version and checksums with the release record.
 
 The bilingual Markdown in `docs/` is the canonical documentation source.
 The English IPL specification is normative for its wire format; the Chinese
-text explains the same contract. A future lemqo.com site can publish these
-same versioned files and link each release to its source, specification,
-examples, and checksums. Avoid a second, independently edited technical
+text explains the same contract. The lemqo.com site links to the same versioned files, release source,
+specification, examples, and checksums. Avoid a second, independently edited technical
 specification on the website.
 
-`docs/` 中的双语 Markdown 是正式文档源。英文 IPL 规范是传输格式的规范性依据，中文说明同一契约。未来的 lemqo.com 网站可以发布相同的版本化文件，并将每个版本链接到其源码、规范、示例和校验和。避免在网站上另行维护一份独立编辑的技术规范。
+`docs/` 中的双语 Markdown 是正式文档源。英文 IPL 规范是传输格式的规范性依据，中文说明同一契约。lemqo.com 网站链接到相同的版本化文件，以及发布源码、规范、示例和校验和。避免在网站上另行维护一份独立编辑的技术规范。

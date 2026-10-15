@@ -49,6 +49,23 @@ class LeanOrchestrationTests(unittest.TestCase):
         self.assertEqual(result["checked_declarations"], 1)
         self.assertEqual(result["proof_sha256"], hashlib.sha256(self.proof.read_bytes()).hexdigest())
 
+    def test_every_selected_theorem_is_bound_and_counted(self):
+        rows = records()
+        rows += [{"str": {"pre": 1, "str": "second"}, "in": 3},
+                 {"thm": {"name": 3, "levelParams": [], "type": 0, "value": 0, "all": [3]}}]
+        data = encode(rows)
+        self.reference.write_bytes(data)
+        self.proof.write_bytes(data)
+        self.claim_value["theorem_names"] = ["Demo.goal", "Demo.second"]
+        self.claim_value["reference"] = {"sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)}
+        self.claim.write_text(json.dumps(self.claim_value))
+        matched = json.dumps({"status": "matched", "theorem_names": self.claim_value["theorem_names"]}).encode()
+        with patch("lemqo.lean.run_backend", side_effect=[matched, b"Checked 2 declarations with no errors\n"]):
+            self.assertEqual(self.verify()["theorem_names"], self.claim_value["theorem_names"])
+        with patch("lemqo.lean.run_backend", return_value=self.matched) as runner, self.assertRaises(Rejection):
+            self.verify()
+        self.assertEqual(runner.call_count, 1)
+
     def test_match_never_substitutes_for_a_proof_check(self):
         for response in (b"", b"Checked 0 declarations with no errors\n",
                          b"Checked 2 declarations with no errors\n",

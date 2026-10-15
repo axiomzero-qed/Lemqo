@@ -18,6 +18,77 @@ class CatalogError(Exception):
     """Raised when the local source catalog or its vendored files are invalid."""
 
 
+CANONICAL_NAME = re.compile(r"[A-Za-z_][A-Za-z_0-9]*(?:\.[A-Za-z_][A-Za-z_0-9]*)*")
+EXTERNAL_ROOTS = frozenset(("Init", "Lean", "Std", "Lake", "Mathlib", "Aesop", "Batteries",
+                            "Cli", "ImportGraph", "LeanSearchClient", "Plausible", "Qq", "ProofWidgets"))
+
+
+def theorem_names(item, label="candidate"):
+    """Normalize the v1 singular spelling or the v0.3 array without ambiguity."""
+    names = item.get("theorem_names")
+    if names is None and "theorem_names" not in item:
+        names = [item.get("theorem")]
+    if (type(names) is not list or not 1 <= len(names) <= 32
+            or any(type(n) is not str or len(n) > 256 or CANONICAL_NAME.fullmatch(n) is None for n in names)
+            or len(set(names)) != len(names)):
+        raise CatalogError(f"{label}.theorem_names must contain 1–32 unique canonical names")
+    if "theorem" in item and names != [item["theorem"]]:
+        raise CatalogError(f"{label}: theorem and theorem_names disagree")
+    return names.copy()
+
+
+def lean_imports(text):
+    # Lean has nested block comments. Preserve line boundaries while stripping
+    # them, so an import in a comment cannot hide a missing local dependency.
+    cleaned, index, depth = [], 0, 0
+    while index < len(text):
+        pair = text[index:index + 2]
+        if pair == "/-":
+            cleaned.append(" ")
+            depth += 1
+            index += 2
+        elif depth and pair == "-/":
+            cleaned.append(" ")
+            depth -= 1
+            index += 2
+        elif not depth and pair == "--":
+            end = text.find("\n", index)
+            index = len(text) if end < 0 else end
+        else:
+            cleaned.append(text[index] if not depth or text[index] == "\n" else " ")
+            index += 1
+    for line in "".join(cleaned).splitlines():
+        match = re.match(r"\s*(?:(?:public|private)\s+)?import\s+(.*)", line)
+        if match is not None:
+            for name in match[1].split():
+                if name == "all":
+                    continue
+                if CANONICAL_NAME.fullmatch(name) is None:
+                    raise CatalogError(f"unsupported import syntax: {name}")
+                yield name
+
+
+def import_roots(work, modules):
+    """Resolve every local root, rejecting unknown imports before Lake runs."""
+    seen, mathlib = set(), set()
+    pending = list(modules)
+    while pending:
+        module = pending.pop()
+        if module in seen:
+            continue
+        seen.add(module)
+        if CANONICAL_NAME.fullmatch(module) is None:
+            raise CatalogError(f"invalid module name: {module}")
+        source = work / (module.replace(".", "/") + ".lean")
+        if source.is_file():
+            pending.extend(lean_imports(source.read_text(encoding="utf-8")))
+        elif module.split(".")[0] not in EXTERNAL_ROOTS:
+            raise CatalogError(f"unresolved local import: {module} (expected {source})")
+        elif module == "Mathlib" or module.startswith("Mathlib."):
+            mathlib.add(module)
+    return sorted(mathlib)
+
+
 @dataclass(frozen=True)
 class Summary:
     candidates: int
@@ -248,12 +319,15 @@ def check_catalog(repository_root: Path) -> Summary:
         label = f"candidates[{index}]"
         item = _mapping(candidate, label)
         ident = _text(item.get("id"), f"{label}.id")
+        if re.fullmatch(r"[a-z][a-z0-9_]{0,63}", ident) is None:
+            raise CatalogError(f"{label}.id must be a lowercase safe identifier (up to 64 characters)")
         if ident.casefold() in ids:
             raise CatalogError(f"duplicate candidate id: {ident}")
         ids.add(ident.casefold())
-        for field in ("theorem", "challenge_module", "solution_module"):
-            _text(item.get(field), f"{label}.{field}")
-        theorem = item["theorem"]
+        for field in ("challenge_module", "solution_module"):
+            if CANONICAL_NAME.fullmatch(_text(item.get(field), f"{label}.{field}")) is None:
+                raise CatalogError(f"{label}.{field} must be a canonical module name")
+        targets = theorem_names(item, label)
         definition_names = item.get("definition_names")
         if not isinstance(definition_names, list) or any(not isinstance(x, str) for x in definition_names):
             raise CatalogError(f"{label}.definition_names must be an array of strings")
@@ -286,7 +360,7 @@ def check_catalog(repository_root: Path) -> Summary:
             raise CatalogError(f"{label}: challenge module does not match config")
         if config.get("solution_module") != item["solution_module"]:
             raise CatalogError(f"{label}: solution module does not match config")
-        if config.get("theorem_names") != [theorem]:
+        if config.get("theorem_names") != targets:
             raise CatalogError(f"{label}: theorem target does not match config")
         if config.get("definition_names") != definition_names:
             raise CatalogError(f"{label}: definition targets do not match config")
@@ -294,6 +368,7 @@ def check_catalog(repository_root: Path) -> Summary:
             raise CatalogError(f"{label}: permitted axioms do not match config")
         if config.get("enable_nanoda") != item.get("enable_nanoda"):
             raise CatalogError(f"{label}: enable_nanoda does not match config")
+        import_roots(corpus / "lean", [item["challenge_module"], item["solution_module"]])
 
     unique_file_count = catalog.get("unique_upstream_file_count")
     if (isinstance(unique_file_count, bool) or not isinstance(unique_file_count, int)

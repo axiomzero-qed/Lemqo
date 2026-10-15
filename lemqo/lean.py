@@ -11,6 +11,7 @@ import re
 import stat
 import tempfile
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 from . import __version__
@@ -19,6 +20,7 @@ from .lean_export import (AXIOMS, EXPORT_VERSION, LEAN_GITHASH, LEAN_VERSION,
                           MAX_EXPORT_BYTES, deadline_check, fields,
                           inspect_export, load_json, names, uint)
 from .native import run_backend
+from .progress import Heartbeat
 
 BACKEND_SOURCES = {
     "comparator": "d03acab154d269c06e60e4de7e4cc85deebff94b",
@@ -109,15 +111,25 @@ def _config(path, data):
     path.chmod(0o400)
 
 
-def verify_lean_files(claim_path, reference_path, proof_path, backends_path, *, timeout=1800):
-    """Return a deterministic receipt only after both native checks complete.
+def verify_lean_files(claim_path, reference_path, proof_path, backends_path, *, timeout=1800,
+                      progress=None, progress_interval=10):
+    """Return a receipt only after both native checks complete.
 
     Binaries must be trusted independently of the submitted certificate.
     Source pins in their configuration are build provenance, not attestations.
     """
     if type(timeout) is not int or not 1 <= timeout <= 7200:
         raise ValueError("timeout must be an integer from 1 to 7200 seconds")
-    deadline = time.monotonic() + timeout
+    started = time.monotonic()
+    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    with Heartbeat(progress, progress_interval) as heartbeat:
+        receipt = _verify_lean_files(claim_path, reference_path, proof_path, backends_path,
+                                     started + timeout, heartbeat)
+    receipt.update(started_at=started_at, duration_seconds=round(time.monotonic() - started, 3))
+    return receipt
+
+
+def _verify_lean_files(claim_path, reference_path, proof_path, backends_path, deadline, heartbeat):
     claim_bytes = _read_small(claim_path)
     claim = read_claim(claim_bytes)
     backend_bytes = _read_small(backends_path)
@@ -125,16 +137,20 @@ def verify_lean_files(claim_path, reference_path, proof_path, backends_path, *, 
     with tempfile.TemporaryDirectory(prefix="lemqo-lean-") as temp:
         work = Path(temp)
         reference, solution = work / "reference.ndjson", work / "solution.ndjson"
+        heartbeat.update("snapshotting certificate inputs")
         _snapshot(reference_path, reference, deadline)
         _snapshot(proof_path, solution, deadline)
         options = dict(targets=claim["theorem_names"], permitted_axioms=claim["permitted_axioms"], deadline=deadline)
+        heartbeat.update("preflight reference")
         ref_info = inspect_export(reference, reference=True, **options)
         if any(ref_info[key] != claim["reference"][key] for key in ("sha256", "bytes")):
             raise Rejection("lean-reference", "reference does not match the caller-selected claim")
+        heartbeat.update("preflight solution")
         proof_info = inspect_export(solution, **options)
         binding_config = work / "binding.json"
         _config(binding_config, {"reference_file": str(reference), "solution_file": str(solution),
                                  "theorem_names": claim["theorem_names"], "permitted_axioms": claim["permitted_axioms"]})
+        heartbeat.update("binding selected statements with Comparator")
         matched = load_json(run_backend(paths["binding"], binding_config, work, deadline))
         if matched != {"status": "matched", "theorem_names": claim["theorem_names"]}:
             raise Rejection("lean-binding", "binding did not confirm the exact selected targets")
@@ -145,6 +161,7 @@ def verify_lean_files(claim_path, reference_path, proof_path, backends_path, *, 
                                  "nat_extension": True, "string_extension": True,
                                  "num_threads": 1, "print_success_message": True,
                                  "print_axioms": False})
+        heartbeat.update(f"Nanoda running on {proof_info['declarations']} declarations (total; completed count unavailable)")
         checked = run_backend(paths["nanoda"], checker_config, work, deadline)
         expected = f"Checked {proof_info['declarations']} declarations with no errors\n".encode("ascii")
         if checked != expected:
@@ -156,6 +173,8 @@ def verify_lean_files(claim_path, reference_path, proof_path, backends_path, *, 
             "independent_kernel": "nanoda", "checked_declarations": proof_info["declarations"],
             "claim_sha256": hashlib.sha256(claim_bytes).hexdigest(),
             "reference_sha256": ref_info["sha256"], "proof_sha256": proof_info["sha256"],
+            "reference_bytes": ref_info["bytes"], "reference_records": ref_info["records"],
+            "reference_declarations": ref_info["declarations"],
             "proof_bytes": proof_info["bytes"], "proof_records": proof_info["records"],
             "backend_config_sha256": hashlib.sha256(backend_bytes).hexdigest(),
             "binding_sha256": backend["binding"]["sha256"], "nanoda_sha256": backend["nanoda"]["sha256"],

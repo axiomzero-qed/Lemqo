@@ -55,6 +55,13 @@ These are successful checks of the explicitly selected formal statements under `
 
 ## Reproduce / 复现
 
+v0.3 supports independent build/export/check phases, per-target failure
+records and exact-hash recovery. See the [batch guide](batch.md) and
+[target-admission schema](corpus-targets.md). The archived results below are
+historical v0.2 checks; workflow improvements do not imply additional checked targets.
+
+v0.3 支持独立构建/导出/检查阶段、逐目标失败记录及精确哈希恢复，参见[批量指南](batch.md)及[目标入库模式](corpus-targets.md)。归档成果是历史 v0.2 检查记录；工作流改进不表示新增已核验目标。
+
 Follow [the native backend build](lean.md), then run:
 
 按照 [原生后端构建说明](lean.md)操作，然后运行：

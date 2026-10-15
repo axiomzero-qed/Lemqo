@@ -4,6 +4,38 @@
 
 ## Unreleased / 尚未发布
 
+No pending release changes. / 暂无待发布变更。
+
+## 0.3.0 — recoverable verification workflows, 2026-10-16 / 可恢复核验流程
+
+- Supports 1–32 theorem names in a catalog candidate, preserving the singular
+  spelling for existing single-target entries and requiring exact config binding.
+  语料候选支持 1–32 个定理名称，兼容单目标旧写法，并严格匹配配置。
+- Splits build/export/check, continues after per-target failures, writes atomic
+  checkpoints and batch summaries, and adds `--reuse-exports` / `--resume`.
+  拆分构建/导出/检查，单目标失败后继续，原子写入检查点与汇总，并增加导出复用及续跑。
+- Selects IDs from the catalog, rejects unresolved local imports at admission,
+  and documents corpus extension and heavy-target timeouts.
+  从目录选择 ID，入库时拒绝未解析本地导入，并补充语料扩展和重目标时限文档。
+- Adds truthful elapsed-time heartbeats, distinct exit/signal/CPU-limit errors,
+  UTC start time, duration and reference counts in Lean receipts.
+  增加如实报告耗时的心跳，区分退出/信号/CPU 限额错误，Lean 回执增加 UTC 起始时间、耗时及参考计数。
+- Adds `audit-receipt` for file/receipt consistency, explicitly separate from a
+  fresh proof check; supports older v0.2 receipts.
+  增加回执与文件一致性审计，明确区分于新的证明检查，兼容旧 v0.2 回执。
+- Adds a dependency-free MCP stdio reference server for the existing IPL/Lean
+  APIs, with operator-fixed trust inputs and bounded proof submissions.
+  增加调用现有 IPL/Lean API 的零依赖 MCP stdio 参考服务，可信输入由操作者固定，证明提交有界。
+- Publishes the existing bilingual website source and updates its release
+  overview, workflow, audit and agent-integration links for v0.3.
+  将现有双语网站源码纳入仓库，并更新 v0.3 功能、工作流、审计及智能体接入链接。
+
+Logical acceptance, backend source pins and the three archived v0.2 theorem
+records are preserved. This release does not claim a recheck of all OpenAI
+targets or a formal proof of implementation correctness.
+
+逻辑验收条件、后端源码固定版本及三份 v0.2 定理归档记录保持不变。本次不声称重跑了全部 OpenAI 目标，也不声称实现具有形式化正确性证明。
+
 - Pairs project documentation in English and Simplified Chinese, adds a
   developer index and terminology guide, and checks links in the bridge and
   corpus guides. Protocol identifiers and certificate examples are unchanged.

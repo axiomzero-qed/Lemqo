@@ -1,4 +1,6 @@
 import sys
+import os
+import signal
 import tempfile
 import time
 import unittest
@@ -23,6 +25,19 @@ class NativeRunnerTests(unittest.TestCase):
         for program in ('raise SystemExit(1)', 'import sys; print("error",file=sys.stderr)'):
             with self.subTest(program=program), self.assertRaises(Rejection):
                 self.run_program(program)
+
+    def test_nonzero_exit_has_a_distinct_code(self):
+        with self.assertRaises(Rejection) as error:
+            self.run_program("raise SystemExit(7)")
+        self.assertEqual(error.exception.code, "backend-exit")
+        self.assertIn("7", str(error.exception))
+
+    @unittest.skipUnless(os.name == "posix", "POSIX-only signals")
+    def test_cpu_and_other_signals_are_distinguished(self):
+        for number, code in ((signal.SIGTERM, "backend-signal"), (getattr(signal, "SIGXCPU", signal.SIGTERM), "backend-cpu-limit")):
+            with self.subTest(signal=number), self.assertRaises(Rejection) as error:
+                self.run_program(f"import os; os.kill(os.getpid(), {number})")
+            self.assertEqual(error.exception.code, code)
 
     def test_output_bound(self):
         with self.assertRaises(Rejection):
