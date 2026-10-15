@@ -13,6 +13,10 @@ Lemqo 自有文档在同一文件内提供英文和简体中文对照。请先�
 | Contribute a change / 参与开发 | [Contributing / 贡献指南](../CONTRIBUTING.md), [architecture / 架构](architecture.md), [examples / 示例](../examples/README.md) |
 | Audit the IPL rules / 审计 IPL 规则 | [Specification / 规范](specification.md), [trust and soundness / 信任与健全性](trust.md), [research / 技术调研](research.md) |
 | Reproduce independent Lean checking / 复现 Lean 独立验证 | [Lean guide / Lean 指南](lean.md), [bridge / 桥接程序](../bridge/lean/README.md), [OpenAI results / OpenAI 结果](openai.md), [corpus guide / 语料指南](../corpus/openai/README.md) |
+| Run and recover a batch / 运行及恢复批量任务 | [Batch phases, timeouts and receipt audit / 分阶段、时限及回执审计](batch.md) |
+| Add theorem targets / 新增定理目标 | [Catalog fields and source closure / 目录字段及源码闭包](corpus-targets.md) |
+| Connect an agent / 接入智能体 | [MCP stdio reference server / MCP stdio 参考服务](mcp.md) |
+| Review v0.3 / 审查 v0.3 | [Validation and feedback coverage / 验证及反馈覆盖](validation-v0.3.md) |
 | Review evidence and prepare releases / 审查证据与准备发布 | [v0.2 validation / v0.2 验证记录](validation-v0.2.md), [historical v0.1 record / v0.1 历史记录](validation.md), [release guide / 发布指南](release.md) |
 | Understand future work and project policies / 了解后续工作与项目规则 | [Roadmap / 路线图](roadmap.md), [security / 安全](../SECURITY.md), [conduct / 行为准则](../CODE_OF_CONDUCT.md), [third-party notices / 第三方声明](../THIRD_PARTY.md) |
 

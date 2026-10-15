@@ -96,6 +96,29 @@ def make_tiny_snapshot(repository):
 
 
 class CatalogTests(unittest.TestCase):
+    def test_multi_theorem_candidate_and_config_match(self):
+        with tempfile.TemporaryDirectory() as temp:
+            repository = Path(temp)
+            corpus = make_tiny_snapshot(repository)
+            path = corpus / "catalog.json"
+            catalog = json.loads(path.read_bytes())
+            item = catalog["candidates"][0]
+            item.pop("theorem")
+            item["theorem_names"] = ["OAI.target", "OAI.second"]
+            config_path = corpus / item["challenge_config"]
+            config = json.loads(config_path.read_bytes())
+            config["theorem_names"] = item["theorem_names"]
+            data = json.dumps(config).encode()
+            config_path.write_bytes(data)
+            item["challenge_config_bytes"] = len(data)
+            item["challenge_config_sha256"] = hashlib.sha256(data).hexdigest()
+            path.write_text(json.dumps(catalog))
+            self.assertEqual(check_catalog(repository).candidates, 1)
+            item["theorem_names"] = ["OAI.target"]
+            path.write_text(json.dumps(catalog))
+            with self.assertRaisesRegex(CatalogError, "theorem target does not match"):
+                check_catalog(repository)
+
     def test_real_snapshot_and_cli(self):
         summary = check_catalog(ROOT)
         self.assertEqual(summary.candidates, 3)

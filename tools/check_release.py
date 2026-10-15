@@ -21,7 +21,8 @@ def check_documents():
                 "docs/lean.md", "docs/openai.md", "corpus/openai/catalog.json",
                 "corpus/openai/LICENSE", "bridge/lean/Main.lean", "bridge/lean/lake-manifest.json",
                 "bridge/openai/lake-manifest.json", "docs/README.md",
-                "corpus/openai/README.md", "bridge/lean/README.md")
+                "corpus/openai/README.md", "bridge/lean/README.md", "docs/batch.md",
+                "docs/corpus-targets.md", "docs/mcp.md", "docs/validation-v0.3.md")
     for name in required:
         if not (ROOT / name).is_file():
             raise RuntimeError(f"missing release file: {name}")

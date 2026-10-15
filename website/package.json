@@ -1,0 +1,13 @@
+{
+  "name": "lemqo-website",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "The bilingual Lemqo project website, built for Cloudflare Pages.",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node preview.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -14,7 +14,7 @@ MAX_OUTPUT_BYTES = 64 * 1024
 MAX_ADDRESS_SPACE = 10 * 1024**3
 _LINUX_LIMITS = """import os, resource, sys
 resource.setrlimit(resource.RLIMIT_AS, (int(sys.argv[3]), int(sys.argv[3])))
-resource.setrlimit(resource.RLIMIT_CPU, (int(sys.argv[4]), int(sys.argv[4])))
+resource.setrlimit(resource.RLIMIT_CPU, (int(sys.argv[4]), int(sys.argv[4]) + 1))
 resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
 resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
 os.execv(sys.argv[1], sys.argv[1:3])
@@ -76,7 +76,13 @@ def run_backend(executable, config, directory, deadline):
     if overflow.is_set() or read_error.is_set() or any(reader.is_alive() for reader in readers):
         raise Rejection("lean-backend", "backend output did not complete within limits")
     if process.returncode != 0:
-        raise Rejection("lean-backend", "backend rejected the input or did not complete")
+        if os.name == "posix" and process.returncode < 0:
+            number = -process.returncode
+            if number == getattr(signal, "SIGXCPU", None):
+                raise Rejection("backend-cpu-limit", "backend exceeded its CPU time limit (SIGXCPU)")
+            label = signal.Signals(number).name
+            raise Rejection("backend-signal", f"backend terminated by {label} ({number}); SIGKILL may indicate an external resource limit")
+        raise Rejection("backend-exit", f"backend exited with status {process.returncode}")
     if errors:
         raise Rejection("lean-backend", "backend emitted unexpected error output")
     return bytes(output)

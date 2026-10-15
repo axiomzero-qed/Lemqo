@@ -12,8 +12,8 @@ AI, and other proof systems through documented translations.
 
 Lemqo 探索如何让证明核验过程透明且易于审计。证明生成方提供证明证书；检查器针对单独选定的待核验陈述 claim 重放每一步推理。证明生成和核验是分开的工作。我们的长期目标是通过有文档说明的转换，核验由人类、AI 和其他证明系统生成的证书。
 
-**v0.2 preserves the v0.1 intuitionistic propositional logic checker and adds
-an optional, experimental independent Lean-certificate check.**
+**v0.3 adds recoverable batch production, multi-theorem targets, receipt
+auditing and an optional MCP stdio interface.**
 The IPL path has ten fixed natural-deduction rules for implication, conjunction,
 disjunction, and falsehood. The original `check` command and certificate
 semantics are unchanged. The separate `check-lean` workflow is limited to the
@@ -22,7 +22,17 @@ Three selected OpenAI theorem targets have passed actual statement binding
 and independent Nanoda checking: Seymour's second-neighborhood theorem,
 Erdős–Gallai cycle decomposition, and Borsuk's projector main theorem.
 
-v0.2 保留 v0.1 的直觉主义命题逻辑检查器，并增加可选的实验性 Lean 证书独立核验。IPL 路径包含十条固定的自然演绎规则，涵盖蕴含、合取、析取和假。原有 `check` 命令和证书语义保持不变。独立的 `check-lean` 工作流仅限于仓库中固定版本并随仓库提供的 OpenAI 语料；它不代表通用 Lean 支持。三个选定的 OpenAI 定理目标已通过实际陈述绑定和 Nanoda 独立核验：Seymour 第二邻域定理、Erdős–Gallai 圈分解定理，以及 Borsuk 投影算子主定理。
+v0.3 增加可恢复的批量生产、多定理目标、回执审计及可选 MCP stdio 接口。IPL 路径包含十条固定的自然演绎规则，涵盖蕴含、合取、析取和假。原有 `check` 命令和证书语义保持不变。独立的 `check-lean` 工作流仍是限定语料的实验性路径，不代表通用 Lean 支持。仓库保留三个选定 OpenAI 定理目标的实际陈述绑定和 Nanoda 独立核验记录：Seymour 第二邻域定理、Erdős–Gallai 圈分解定理，以及 Borsuk 投影算子主定理。
+
+The new [batch workflow](docs/batch.md) continues after per-target failures,
+separates build/export/check, and reuses hash-bound export checkpoints. Lean
+checks report phase/elapsed-time heartbeats and distinguish backend exits,
+signals, CPU limits and deadlines. `audit-receipt` checks evidence consistency
+without rerunning Nanoda; it does not verify a proof. The [MCP reference server](docs/mcp.md)
+keeps trust inputs fixed by its operator. See [adding a target](docs/corpus-targets.md)
+and the [v0.3 validation record](docs/validation-v0.3.md).
+
+新的[批量工作流](docs/batch.md)会在单目标失败后继续，分离构建/导出/检查，并复用经哈希绑定的导出检查点。Lean 检查报告阶段与耗时心跳，并区分后端退出、信号、CPU 限额和时限。`audit-receipt` 无需重跑 Nanoda 即可核对证据一致性，但不会验证证明。[MCP 参考服务](docs/mcp.md)的可信输入由操作者固定。另见[新增目标指南](docs/corpus-targets.md)及 [v0.3 验证记录](docs/validation-v0.3.md)。
 
 <a id="try-a-valid-and-an-invalid-proof"></a>
 
@@ -124,7 +134,7 @@ generated locally rather than committed as hundreds of megabytes of JSON.
 ```sh
 python tools/check_release.py
 python tools/build_release.py --out dist
-python dist/lemqo-0.2.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
+python dist/lemqo-0.3.0.pyz check examples/identity.proof.json --claim examples/identity.claim.json
 ```
 
 The original 49 IPL tests retain their v0.1 semantics and cover valid proofs,

@@ -9,6 +9,12 @@ Its trusted boundary is substantially larger than the IPL path.
 
 Lemqo v0.2 为选定的 Lean 4 证书增加独立验证路径。小型 IPL 演算和 `lemqo check` 仍可使用。Lean 路径复用已有实现，不向 IPL 内核加入依赖类型；其可信边界显著大于 IPL 路径。
 
+v0.3 adds [batch recovery, heartbeat diagnostics and receipt audits](batch.md),
+[multi-theorem corpus admission](corpus-targets.md), and an optional
+[MCP stdio server](mcp.md), preserving the acceptance contract below.
+
+v0.3 增加[批量恢复、心跳诊断及回执审计](batch.md)、[多定理语料入库](corpus-targets.md)及可选 [MCP stdio 服务](mcp.md)，保留下述验收契约。
+
 <a id="acceptance-contract"></a>
 
 ## Acceptance contract / 验收契约
